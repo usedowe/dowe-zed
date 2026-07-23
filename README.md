@@ -199,4 +199,4 @@ version = "0.1.0"
 | `scripts/check.sh`                  | Runs local build and decoupling checks                                                 |
 | `icons/extension.toml`              | Registers the separate Dowe icon theme extension                                       |
 | `icons/icon_themes/dowe-icons.json` | Defines the Dowe dark and light icon themes                                             |
-| `icons/assets/logo.svg`             | Provides the icon theme asset                                                           |
+| `icons/icons/logo.svg`             | Provides the icon theme asset                                                           |
