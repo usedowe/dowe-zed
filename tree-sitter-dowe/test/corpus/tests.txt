@@ -1,0 +1,80 @@
+==================
+Native project tests
+==================
+
+test "literal assertions"
+  assert true value:true
+  assert false value:false
+  assert equal actual:{ name:"dowe" versions:[1, 2] } expected:{ name:"dowe" versions:[1, 2] }
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (string))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (value
+        (boolean)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (value
+        (boolean)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (string)))
+            (object_entry
+              (property_name)
+              (value
+                (array
+                  (value
+                    (number))
+                  (value
+                    (number)))))))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (string)))
+            (object_entry
+              (property_name)
+              (value
+                (array
+                  (value
+                    (number))
+                  (value
+                    (number)))))))))))

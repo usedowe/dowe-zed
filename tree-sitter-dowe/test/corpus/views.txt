@@ -1,0 +1,2733 @@
+==================
+Theme design theme
+==================
+
+theme
+  fonts default:"inter" install:["inter"]
+  design defaultTheme:"light"
+    Card variant:"outline" scheme:"primary" radius:"xs" shadow:"xs"
+    Button variant:"solid" scheme:"secondary" size:"md"
+    Avatar radius:"full" size:"md"
+    Chip variant:"soft" scheme:"secondary" radius:"full" size:"sm"
+    theme name:"light"
+      colors primary:"#6bc670" onPrimary:"#26201f"
+
+main
+  app name:"Clinic Desk" bundle:"com.example.clinic"
+  views viewRoutes
+  server port:8080
+    endpoints apiRoutes
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array
+            (value
+              (string)))))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (root_keyword)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (value
+        (property_name)))))
+
+==================
+Layout bars
+==================
+
+layout AuthLayout
+  AppBar variant:"soft" scheme:"surface" position:"sticky" bordered:true boxed:true
+    start
+      Text
+        "Dowe"
+    center
+      Text
+        "Auth"
+    end
+      Button href:"/blogs"
+        "Blogs"
+  Footer scheme:"background"
+    start
+      Text
+        "Legal"
+  BottomBar bordered:true
+    tab href:"/home" label:"Home"
+      Icon name:"home"
+    tab href:"/create" label:"Create" featured:true
+      Icon name:"add-circle"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Brand identity
+==================
+
+page brandPage
+  Brand href:"/" label:"Dowe home" w:32 h:8
+    Svg viewBox:"0 0 128 32" w:"full" h:"full"
+      Path d:"M2 2H18V30H2Z" fill:"primary"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Svg paths and children
+==================
+
+layout AuthLayout
+  Box
+    children
+
+page loginPage
+  Svg viewBox:"0 0 24 24" color:"tertiary" w:8 h:8
+    Path d:"M0 0h24v24H0z" fill:"none"
+    Path fill:"currentColor" d:"M22 12c0-5.523-4.477-10-10-10"
+  Svg data:iconData w:8 h:8
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))))
+
+=================================
+Media display and form components
+=================================
+
+page componentsPage
+  Audio src:"https://example.com/audio.mp3" scheme:"primary"
+  Accordion multiple:true
+    item id:"intro" label:"Intro"
+      Text
+        "Body"
+  Carousel title:"Slides"
+    slide id:"one"
+      Text
+        "Slide"
+  Checkbox bind:accepted label:"Accept"
+  Color bind:themeColor value:"#3366ff"
+  Date bind:shipDate value:"2026-06-05"
+  DateRange start:startDate end:endDate
+  RadioGroup bind:plan
+    item value:"basic" label:"Basic"
+  Toggle bind:accepted label:"Enabled"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Tabs
+==================
+
+page accountPage
+  Tabs variant:"pills" scheme:"primary" position:"top"
+    tab id:"overview" label:"Overview"
+      Text
+        "Overview"
+    tab id:"activity" label:"Activity"
+      Text
+        "Activity"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+==================
+Table
+==================
+
+page usersPage
+  signal users value:[]
+  Table data:users variant:"soft" scheme:"surface" size:"lg" striped:true
+    column field:"name" label:"Name"
+    column field:"status" label:"Status" align:"end" width:"8rem"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Candlestick
+==================
+
+page marketPage
+  signal candles value:[]
+  Candlestick data:candles stream:"/api/candles" variant:"soft" scheme:"surface" upColor:"success" downColor:"danger" maxPoints:120
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))))
+
+==================
+Translations
+==================
+
+translations default:true
+  home
+    hero
+      title "Dowe builds systems."
+
+---
+
+(source_file
+  (translation_catalog
+    (translation_root
+      (line_item
+        (prop
+          (property_name)
+          (value
+            (boolean)))))
+    (translation_line
+      (translation_key_line
+        (identifier)))
+    (translation_line
+      (translation_key_line
+        (identifier)))
+    (translation_line
+      (translation_key_line
+        (identifier)
+        (string)))))
+
+==================
+Drawer
+==================
+
+page drawerPage
+  signal drawerOpen value:false
+  Drawer open:drawerOpen position:"start" variant:"soft" scheme:"surface" show:{ xs:true md:false }
+    Text
+      "Navigation"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (boolean)))
+            (object_entry
+              (property_name)
+              (value
+                (boolean))))))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+==================
+Code blocks
+==================
+
+page docsPage
+  Code:
+    language:"dowe"
+    scheme:"surface"
+    content:"""
+      page docsPage
+        Text
+          "Documentation"
+    """
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (suite_marker)))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (value
+          (string)))))
+  (code_property_line
+    (property_name)
+    (value
+      (string)))
+  (code_property_line
+    (property_name)
+    (value
+      (multiline_string))))
+
+==================
+Advanced form controls
+==================
+
+page advancedForms
+  ComboBox label:"Role" placeholder:"Choose role" value:"admin" clearable:true
+    comboOption value:"admin" label:"Admin" description:"Full access"
+    comboOption value:"editor" label:"Editor"
+  CsvField label:"Import users" buttonText:"Upload CSV"
+    csvColumn name:"email" label:"Email"
+  DragDrop label:"Tasks" direction:"horizontal"
+    dragItem id:"todo" label:"Todo"
+    dragGroup id:"done" title:"Done"
+      dragItem id:"ship" label:"Ship"
+  Editor label:"Notes" placeholder:"Write notes" minHeight:180
+  ImageCropper label:"Avatar" shape:"circle"
+  PasswordField label:"Password" hideStrength:false
+  PhoneField label:"Phone" country:"US"
+  PinField label:"Code" length:6
+  Textarea label:"Bio" rows:4 maxLength:160
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))))
+
+==================
+Charts
+==================
+
+page chartPage
+  signal trend value:[]
+  signal slices value:[]
+  LineChart data:trend curve:"smooth" palette:"ocean"
+  AreaChart data:trend legendPosition:"bottom"
+  BarChart data:slices orientation:"vertical"
+  ArcChart data:slices startAngle:0 endAngle:360
+  PieChart data:slices donut:true
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))))
+
+==================
+Video HLS
+==================
+
+page videoPage
+  Video src:"https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" aspect:"horizontal" scheme:"surface"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Iframe embed
+==================
+
+page embedPage
+  Iframe src:"/examples/appbar-one" title:"Example" loading:"lazy" allowFullscreen:true
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))))
+
+==================
+Input and Select form controls
+==================
+
+page formPage
+  Input label:"Email" placeholder:"name@example.com" labelFloating:true variant:"outlined" scheme:"primary"
+  Select label:"Role" placeholder:"Choose a role" labelFloating:true variant:"soft" scheme:"secondary"
+    Option value:"admin" label:"Administrator" description:"Manage users"
+    Option value:"viewer" label:"Viewer"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Section component
+==================
+
+page homePage
+  Section background:"aurora" color:"onBackground"
+    Text
+      "Hero"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+==================
+Typed signals
+==================
+
+type BlogItem
+  title:string
+
+page blogPage
+  signal blogs type:BlogItem[] value:[]
+
+---
+
+(source_file
+  (type_declaration
+    (type_keyword)
+    (type_name))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (type_reference))))
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (type_prop
+        (type_keyword)
+        (type_reference)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array))))))
+
+==================
+View constants
+==================
+
+page catalog
+  const plans value:[]
+  Select bind:scheme
+    each in:plans as:option key:option.id
+      Option value:option.value label:option.label
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
+  (node_line
+    (line_name
+      (control_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))))
+
+==================
+SideNav entries
+==================
+
+layout AuthLayout
+  SideNav
+    header label:"Workspace"
+    item label:"Home"
+      icon
+        Svg viewBox:"0 0 24 24"
+          Path d:"M3 11l9-8 9 8v10H3z" fill:"currentColor"
+    divider
+    submenu label:"Content" open:true
+      item label:"Blogs"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Divider
+==================
+
+page dividerPage
+  Divider orientation:"vertical" scheme:"primary"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Navigation shell components
+==================
+
+page shellPage
+  Scaffold boxed:true
+    appBar
+      NavMenu
+        item label:"Home" href:"/"
+        submenu label:"Docs"
+          item label:"Guide" href:"/docs"
+        megamenu label:"Resources"
+          content
+            Text
+              "Resource hub"
+    start
+      Sidebar
+        body
+          SideNav
+            item label:"Home" href:"/"
+    main
+      Text
+        "Main content"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (root_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+==================
+Display overlay components
+==================
+
+page overlayPage
+  Avatar
+  Badge text:"1"
+    Text
+      "Count"
+  Chip
+    Active
+  Skeleton
+  Modal open:modalOpen
+    header
+      Text
+        "Header"
+    footer
+      Text
+        "Footer"
+  AlertDialog open:modalOpen
+  Tooltip label:"More"
+    Text
+      "Hover"
+  Toast description:"Saved"
+  Dropdown
+    trigger
+      Button
+        "Menu"
+    item label:"Docs"
+    divider
+  Command
+    group label:"Navigation"
+      item label:"Home"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (user_component_name)))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Canvas
+==================
+
+page canvasPage
+  signal scene value:[]
+  Canvas scene:scene viewWidth:320 viewHeight:180 fit:"contain" fps:60 autoplay:true background:"surface" pixelated:false label:"Animated scene"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
+==================
+Persistent view store
+==================
+
+import SessionState from "../types/session"
+
+store session type:SessionState persistent:true value:{ authorization:"" }
+
+---
+
+(source_file
+  (import_statement
+    (identifier)
+    (import_path))
+  (node_line
+    name: (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (type_prop
+        (type_keyword)
+        (type_reference)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (string)))))))))
+
+==================
+Responsive Flex direction
+==================
+
+page responsiveFlexPage
+  Flex direction:{ xs:"column" md:"row" } wrap:true justify:"between" align:"center" gap:3
+    Text
+      "Summary"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (string)))
+            (object_entry
+              (property_name)
+              (value
+                (string)))))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+==================
+Multiline property suites and values
+==================
+
+page canvasPage
+  signal gameScene:
+    value:[
+      {
+        type:"rect"
+        x:0
+        motion:{
+          vx:-18
+          wrap:true
+        }
+      },
+    ]
+  Canvas:
+    scene:gameScene
+    viewWidth:640
+    label:"Animated scene"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (suite_marker)))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (value
+          (array
+            (value
+              (object
+                (object_entry
+                  (property_name)
+                  (value
+                    (string)))
+                (object_entry
+                  (property_name)
+                  (value
+                    (number)))
+                (object_entry
+                  (property_name)
+                  (value
+                    (object
+                      (object_entry
+                        (property_name)
+                        (value
+                          (number)))
+                      (object_entry
+                        (property_name)
+                        (value
+                          (boolean)))))))))))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (suite_marker)))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (type_reference))))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (value
+          (string))))))
+
+==================
+View route page prop
+==================
+
+views viewRoutes
+  group path:"/" layout:RootLayout
+    route path:"" page:homePage
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))))
+
+=======================
+View init and Splash
+=======================
+
+page LoginPage
+  signal isLoading value:true
+  init
+    set isLoading value:false
+  Section
+  Splash bind:isLoading
+    Text
+      "Loading"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+==================
+Imported reusable view component
+==================
+
+import ViewsNavigation from "@/views/components/views-navigation"
+
+layout ViewsLayout
+  Scaffold
+    appBar
+      AppBar
+        center
+          ViewsNavigation
+    start
+      Sidebar
+        body
+          ViewsNavigation
+    main
+      children
+
+---
+
+(source_file
+  (import_statement
+    (identifier)
+    (import_path))
+  (node_line
+    name: (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    name: (line_name
+      (component_name)))
+  (node_line
+    name: (line_name
+      (block_keyword)))
+  (node_line
+    name: (line_name
+      (component_name)))
+  (node_line
+    name: (line_name
+      (block_keyword)))
+  (node_line
+    name: (line_name
+      (user_component_name)))
+  (node_line
+    name: (line_name
+      (block_keyword)))
+  (node_line
+    name: (line_name
+      (component_name)))
+  (node_line
+    name: (line_name
+      (block_keyword)))
+  (node_line
+    name: (line_name
+      (user_component_name)))
+  (node_line
+    name: (line_name
+      (root_keyword)))
+  (node_line
+    name: (line_name
+      (block_keyword))))
+
+==================
+RailNav entries
+==================
+
+layout AppLayout
+  RailNav showLabels:true
+    item label:"Home" icon:"home" href:"/"
+    divider
+    item label:"Settings" icon:"settings" onClick:openSettings
+
+---
+
+(source_file
+  (node_line
+    name: (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    name: (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    name: (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    name: (line_name
+      (block_keyword)))
+  (node_line
+    name: (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))))
