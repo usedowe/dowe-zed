@@ -3,7 +3,7 @@ set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 manifest="$repo_root/extension.toml"
-repository="${DOWE_ZED_REPOSITORY:-https://github.com/dowe-lang/dowe-zed}"
+repository="${DOWE_ZED_REPOSITORY:-https://github.com/usedowe/dowe-zed}"
 
 cd "$repo_root"
 

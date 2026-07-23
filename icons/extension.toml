@@ -1,0 +1,8 @@
+id = "dowe-icons"
+name = "Dowe Icons"
+description = "Dowe file icons for Zed."
+version = "0.1.0"
+schema_version = 1
+authors = ["Dowe Contributors"]
+repository = "https://github.com/usedowe/dowe-zed"
+icon_themes = ["icon_themes/dowe-icons.json"]

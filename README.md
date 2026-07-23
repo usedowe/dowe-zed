@@ -2,7 +2,7 @@
 
 Dowe Zed is the dedicated Zed extension repository for Dowe Source Format files.
 
-This repository contains the Zed extension adapter, language metadata, Tree-sitter queries, icon metadata, and the Dowe Tree-sitter grammar used by Zed. It recognizes `.dowe` files as `Dowe` and starts `dowe-language-server` over stdio.
+This repository contains the Zed extension adapter, language metadata, Tree-sitter queries, and the Dowe Tree-sitter grammar used by Zed. It recognizes `.dowe` files as `Dowe` and starts `dowe-language-server` over stdio.
 
 The extension is maintained here directly. It is not generated from, embedded in, or installed through another Dowe repository.
 
@@ -13,7 +13,8 @@ Dowe editor support is intentionally split across sibling repositories:
 | Repository    | Responsibility                                                                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `../dowe-lsp` | Rust `dowe-language-server`, diagnostics, completions, auto-import code actions, formatting, hover, symbols, navigation, and semantic editor behavior |
-| `../dowe-zed` | Zed extension adapter, Tree-sitter grammar, Zed queries, icon themes, `extension.toml`, and dev-extension install surface   |
+| `../dowe-zed` | Zed language extension adapter, Tree-sitter grammar, Zed queries, `extension.toml`, and dev-extension install surface |
+| `../dowe-zed/icons` | Separate `dowe-icons` icon theme extension published from this repository |
 
 Keep semantic language behavior in `dowe-language-server`. This repository should only own Zed integration, grammar, highlighting, structure, packaging, and local extension installation.
 
@@ -64,7 +65,7 @@ Install the extension in Zed with `zed: install dev extension` and select this r
 
 After replacing the local language-server binary or changing the grammar rev, restart the Dowe language server or reload the Zed window. If Zed still uses stale grammar state, reinstall the dev extension from this repository.
 
-The extension also provides the `Dowe Icons Dark` and `Dowe Icons Light` icon themes. Select one from Zed's icon theme selector to use the Dowe logo for `.dowe` files in the project panel.
+The separate `dowe-icons` extension provides the `Dowe Icons Dark` and `Dowe Icons Light` icon themes. Select one from Zed's icon theme selector to use the Dowe logo for `.dowe` files in the project panel.
 
 To import an unresolved exact symbol, place the cursor on it and open Zed code actions with `Command + .` on macOS or `Control + .` on Windows and Linux. The language server offers one canonical project-root import such as `@/views/...` or `@/server/...` for each matching `.dowe` export under the nearest ancestor containing `main.dowe`.
 
@@ -135,7 +136,7 @@ server provides the shared compiler validation for targets and operation types.
 
 ## Language Server
 
-The published extension must not depend on a private Dowe checkout. The adapter uses an explicit Zed LSP binary setting when present, then a `dowe-language-server` binary on `PATH`, and otherwise asks Zed to download `dowe-language-server` from public release assets on `dowe-lang/dowe-zed`. The language-server source remains in `../dowe-lsp`; release assets attached to the extension are built from that repository.
+The published extension must not depend on a private Dowe checkout. The adapter uses an explicit Zed LSP binary setting when present, then a `dowe-language-server` binary on `PATH`, and otherwise asks Zed to download `dowe-language-server` from public release assets on `usedowe/dowe-zed`. The language-server source remains in `../dowe-lsp`; release assets attached to the extension are built from that repository.
 
 Each release that should provide language-server features needs these assets:
 
@@ -169,9 +170,18 @@ After committing grammar changes, prepare the manifest for publication:
 ./scripts/prepare-publish.sh
 ```
 
-This changes the grammar entry to use `https://github.com/dowe-lang/dowe-zed`, the current `HEAD` commit, and `path = "tree-sitter-dowe"`.
+This changes the grammar entry to use `https://github.com/usedowe/dowe-zed`, the current `HEAD` commit, and `path = "tree-sitter-dowe"`.
 
 Then open a PR to `zed-industries/extensions` that adds this repository as a submodule under `extensions/dowe` and adds the matching version to `extensions.toml`.
+
+The same submodule can publish the separate icon theme extension with this additional registry entry:
+
+```toml
+[dowe-icons]
+submodule = "extensions/dowe"
+path = "icons"
+version = "0.1.0"
+```
 
 ## Repository Layout
 
@@ -182,10 +192,11 @@ Then open a PR to `zed-industries/extensions` that adds this repository as a sub
 | `src/lib.rs`                        | Starts `dowe-language-server` for Zed                                                  |
 | `languages/dowe/config.toml`        | Registers `.dowe`, tab size, and grammar metadata                                      |
 | `languages/dowe/*.scm`              | Tree-sitter queries for highlighting, indentation, outline, text objects, and brackets |
-| `icon_themes/dowe-icons.json`       | Registers the Dowe file icon theme                                                     |
-| `assets/logo.svg`                   | Provides the Dowe icon asset                                                           |
 | `tree-sitter-dowe/grammar.js`       | Tree-sitter grammar source                                                             |
 | `tree-sitter-dowe/src/parser.c`     | Generated Tree-sitter parser consumed by Zed                                           |
 | `scripts/bootstrap-grammar-repo.sh` | Builds the local git mirror used by Zed dev extension installs                         |
 | `scripts/prepare-publish.sh`        | Points the grammar at the public repository before publishing                          |
 | `scripts/check.sh`                  | Runs local build and decoupling checks                                                 |
+| `icons/extension.toml`              | Registers the separate Dowe icon theme extension                                       |
+| `icons/icon_themes/dowe-icons.json` | Defines the Dowe dark and light icon themes                                             |
+| `icons/assets/logo.svg`             | Provides the icon theme asset                                                           |

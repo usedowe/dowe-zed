@@ -6,7 +6,7 @@ use zed_extension_api::{
 };
 
 const LANGUAGE_SERVER_BINARY: &str = "dowe-language-server";
-const LANGUAGE_SERVER_REPOSITORY: &str = "dowe-lang/dowe-zed";
+const LANGUAGE_SERVER_REPOSITORY: &str = "usedowe/dowe-zed";
 const MANAGED_INSTALL_DIR: &str = "dowe-language-server";
 
 struct DoweExtension {

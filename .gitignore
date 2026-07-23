@@ -2,3 +2,4 @@
 /extension.wasm
 /grammars/
 /.zed-dev/
+.DS_Store
