@@ -848,6 +848,10 @@
     "named": false
   },
   {
+    "type": "cache",
+    "named": false
+  },
+  {
     "type": "center",
     "named": false
   },
@@ -900,7 +904,7 @@
     "named": false
   },
   {
-    "type": "db",
+    "type": "database",
     "named": false
   },
   {
@@ -932,11 +936,19 @@
     "named": false
   },
   {
+    "type": "emb",
+    "named": false
+  },
+  {
     "type": "end",
     "named": false
   },
   {
     "type": "endpoints",
+    "named": false
+  },
+  {
+    "type": "entity",
     "named": false
   },
   {
@@ -1016,11 +1028,19 @@
     "named": false
   },
   {
+    "type": "insert",
+    "named": false
+  },
+  {
     "type": "item",
     "named": false
   },
   {
     "type": "jwt",
+    "named": false
+  },
+  {
+    "type": "kv",
     "named": false
   },
   {
@@ -1160,6 +1180,10 @@
     "named": false
   },
   {
+    "type": "seeder",
+    "named": false
+  },
+  {
     "type": "send",
     "named": false
   },
@@ -1277,6 +1301,10 @@
   },
   {
     "type": "variant",
+    "named": false
+  },
+  {
+    "type": "vector",
     "named": false
   },
   {

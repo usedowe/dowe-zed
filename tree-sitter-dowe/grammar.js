@@ -195,6 +195,8 @@ module.exports = grammar({
         "page",
         "component",
         "store",
+        "entity",
+        "seeder",
         "test",
         $.type_keyword,
       ),
@@ -268,7 +270,12 @@ module.exports = grammar({
     fn_keyword: ($) =>
       choice(
         "signal",
-        "db",
+        "database",
+        "insert",
+        "cache",
+        "kv",
+        "vector",
+        "emb",
         "query",
         "const",
         "fn",

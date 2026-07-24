@@ -109,7 +109,7 @@ main
 Server spawn declaration
 ==================
 
-handler inspectMedia async req
+handler inspectMedia async
   spawn ffmpeg command:"ffmpeg" args:["-version"] timeoutMs:5000 maxOutputBytes:65536
   return response json:{ ok:ffmpeg.ok }
 
@@ -119,9 +119,6 @@ handler inspectMedia async req
   (node_line
     (line_name
       (block_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (value
         (property_name)))
@@ -283,6 +280,74 @@ middleware requireBearer params:{}
                 (string)))))))))
 
 ==================
+Vector connection and embedding search
+==================
+
+vector appVector provider:"dowe" host:env.VECTOR_HOST port:env.VECTOR_PORT account:env.VECTOR_USER secret:env.VECTOR_PASSWORD name:env.VECTOR_DATABASE
+emb matches conn:appVector.search vector:req.body.vector limit:10
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))))
+
+==================
 Declared types
 ==================
 
@@ -290,7 +355,7 @@ type User
   name:string
   age:number
 
-handler createUser async req
+handler createUser async
   const body:User value:req.json
 
 ---
@@ -319,9 +384,6 @@ handler createUser async req
         (property_name)))
     (line_item
       (value
-        (property_name)))
-    (line_item
-      (value
         (property_name))))
   (node_line
     (line_name
@@ -340,7 +402,7 @@ handler createUser async req
 LLM server outbound HTTP and WebSocket bridge
 ==================
 
-handler chatCompletions async req
+handler chatCompletions async
   const body value:req.json
   http upstream method:"post" base:env.OPENROUTER_BASE_URL path:"/api/v1/chat/completions" bearer:env.OPENROUTER_API_KEY json:body mode:"proxy"
   return response proxy:upstream
@@ -359,9 +421,6 @@ websocket "/api/v1/agent/ws"
   (node_line
     (line_name
       (block_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (value
         (property_name)))
@@ -566,7 +625,7 @@ websocket "/api/v1/agent/ws"
 General server outbound HTTP request
 ==================
 
-handler fetchProducts async req
+handler fetchProducts async
   http upstream method:"get" base:env.CATALOG_BASE_URL path:"/products" headers:[{ name:"Accept" value:"application/json" }] redirect:"manual" timeoutMs:5000 mode:"json"
   return response json:upstream
 
@@ -576,9 +635,6 @@ handler fetchProducts async req
   (node_line
     (line_name
       (block_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (value
         (property_name)))
@@ -657,7 +713,7 @@ fn listTickets
   return value:{ ok:true data:rows }
 
 fn listTicketsRepository
-  db db name:"support"
+  database db provider:"dowe" host:"127.0.0.1" port:4147 account:"api" secret:"secret" name:"support"
   query rows db:db.list table:"tickets"
   return value:{ rows:rows }
 
@@ -723,6 +779,31 @@ fn listTicketsRepository
       (prop
         (property_name)
         (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
           (string)))))
   (node_line
     (line_name
@@ -754,10 +835,132 @@ fn listTicketsRepository
                 (property_name)))))))))
 
 ==================
+Database schema bindings
+==================
+
+entity Users
+  id:string primary:true
+  name:string required:true
+
+seeder Bootstrap
+  insert entity:Users value:{ id:"admin" name:"Administrator" }
+
+database appDb provider:"postgres" host:env.POSTGRES_HOST port:env.POSTGRES_PORT account:env.POSTGRES_USER secret:env.POSTGRES_PASSWORD name:env.POSTGRES_DATABASE entities:[Users] seeders:[Bootstrap]
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (type_reference)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (type_reference)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (string)))
+            (object_entry
+              (property_name)
+              (value
+                (string))))))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array
+            (value
+              (property_name))))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array
+            (value
+              (property_name))))))))
+
+==================
 Media proxy server primitives
 ==================
 
-handler dashSegment async req
+handler dashSegment async
   let query = req.query
   let raw = req.rawQuery
   let session = req.cookie name:"session"
@@ -772,9 +975,6 @@ handler dashSegment async req
   (node_line
     (line_name
       (block_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (value
         (property_name)))
@@ -1043,3 +1243,75 @@ endpoints apiRoutes
           (array
             (value
               (property_name))))))))
+
+==================
+Cache connection and KV operation
+==================
+
+cache appCache provider:"dowe" host:env.CACHE_HOST port:env.CACHE_PORT account:env.CACHE_USER secret:env.CACHE_PASSWORD name:env.CACHE_DATABASE
+kv saved conn:appCache.set key:"appointment:1" value:{ patientName:"Ana" }
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (string)))))))))

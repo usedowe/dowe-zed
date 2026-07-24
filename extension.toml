@@ -18,9 +18,8 @@ languages = ["Dowe"]
 "Dowe" = "dowe"
 
 [grammars.dowe]
-repository = "https://github.com/usedowe/dowe-zed"
-rev = "114f88afbe3b48b37ceecadd0cb257d35a34de5d"
-path = "tree-sitter-dowe"
+repository = "file:///Users/varb/Work/dowe/dowe-zed/.zed-dev/tree-sitter-dowe.git"
+rev = "0e2d76d9921d2df51df4168aa3c36838b2c88240"
 
 [context_servers]
 

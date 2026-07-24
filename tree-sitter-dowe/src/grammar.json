@@ -1232,6 +1232,14 @@
         },
         {
           "type": "STRING",
+          "value": "entity"
+        },
+        {
+          "type": "STRING",
+          "value": "seeder"
+        },
+        {
+          "type": "STRING",
           "value": "test"
         },
         {
@@ -1528,7 +1536,27 @@
         },
         {
           "type": "STRING",
-          "value": "db"
+          "value": "database"
+        },
+        {
+          "type": "STRING",
+          "value": "insert"
+        },
+        {
+          "type": "STRING",
+          "value": "cache"
+        },
+        {
+          "type": "STRING",
+          "value": "kv"
+        },
+        {
+          "type": "STRING",
+          "value": "vector"
+        },
+        {
+          "type": "STRING",
+          "value": "emb"
         },
         {
           "type": "STRING",

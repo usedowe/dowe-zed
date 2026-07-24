@@ -8,7 +8,12 @@
 (node_line name: (line_name (root_keyword) @keyword))
 (node_line name: (line_name (block_keyword) @keyword))
 (node_line name: (line_name (control_keyword) @keyword))
-(node_line name: (line_name (fn_keyword) @function))
+(node_line
+  name: (line_name (fn_keyword) @keyword)
+  (#match? @keyword "^(database|cache|vector)$"))
+(node_line
+  name: (line_name (fn_keyword) @function)
+  (#not-match? @function "^(database|cache|vector)$"))
 (type_prop (type_keyword) @keyword (type_reference) @type)
 (body_type_binding (body_keyword) @variable (type_reference) @type)
 (type_field
