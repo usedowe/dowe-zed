@@ -14,6 +14,7 @@
 (node_line
   name: (line_name (fn_keyword) @function)
   (#not-match? @function "^(database|cache|vector)$"))
+(node_line name: (callable_name (identifier) @function))
 (type_prop (type_keyword) @keyword (type_reference) @type)
 (body_type_binding (body_keyword) @variable (type_reference) @type)
 (type_field

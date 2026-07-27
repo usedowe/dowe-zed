@@ -49,7 +49,18 @@ module.exports = grammar({
     type_declaration: ($) => seq($.type_keyword, $.type_name),
     code_property_line: ($) =>
       prec(6, seq(alias(choice("scheme", "content", "template", "copyLabel", "copiedLabel"), $.property_name), ":", $.value)),
-    node_line: ($) => seq(field("name", $.line_name), repeat($.line_item)),
+    node_line: ($) =>
+      choice(
+        seq(field("name", $.line_name), repeat($.line_item)),
+        prec(
+          2,
+          seq(
+            field("name", $.callable_name),
+            field("binding", $.callable_binding),
+            repeat($.line_item),
+          ),
+        ),
+      ),
     line_name: ($) =>
       choice(
         $.type_field,
@@ -286,6 +297,7 @@ module.exports = grammar({
         "return",
         "next",
         "bearer",
+        "session",
         "send",
         "bridge",
         "go",
@@ -400,6 +412,8 @@ module.exports = grammar({
         "Path",
       ))),
     user_component_name: ($) => token(prec(2, /[A-Z][A-Za-z0-9_]*/)),
+    callable_name: ($) => prec(1, $.identifier),
+    callable_binding: ($) => $.identifier,
     property_name: ($) => token(prec(1, /[A-Za-z_][A-Za-z0-9_]*/)),
     identifier: ($) => token(prec(-1, /[A-Za-z_][A-Za-z0-9_]*/)),
     punctuation: ($) => choice(",", ".", "!", "?", ";"),

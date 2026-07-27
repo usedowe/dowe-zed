@@ -109,9 +109,9 @@ main
 Server spawn declaration
 ==================
 
-handler inspectMedia async
+handler inspectMedia
   spawn ffmpeg command:"ffmpeg" args:["-version"] timeoutMs:5000 maxOutputBytes:65536
-  return response json:{ ok:ffmpeg.ok }
+  return json:{ ok:ffmpeg.ok }
 
 ---
 
@@ -119,9 +119,6 @@ handler inspectMedia async
   (node_line
     (line_name
       (block_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (value
         (property_name))))
@@ -157,9 +154,6 @@ handler inspectMedia async
     (line_name
       (fn_keyword))
     (line_item
-      (value
-        (property_name)))
-    (line_item
       (prop
         (property_name)
         (value
@@ -181,7 +175,7 @@ middleware requireBearer params:{}
   jwt verified secret:env.JWT_SECRET algorithm:"HS256" token:token
   if verified.valid
     next
-  return response status:401 json:{ ok:false error:"Unauthorized" }
+  return status:401 json:{ ok:false error:"Unauthorized" }
 
 ---
 
@@ -257,9 +251,6 @@ middleware requireBearer params:{}
   (node_line
     (line_name
       (fn_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (prop
         (property_name)
@@ -348,6 +339,62 @@ emb matches conn:appVector.search vector:req.body.vector limit:10
           (number))))))
 
 ==================
+Capability-first standard library and return
+==================
+
+str sessionKey source:"join" values:["session", args.id] delimiter:":"
+return status:201 json:{ ok:true key:sessionKey }
+
+---
+
+(source_file
+  (node_line
+    (callable_name
+      (identifier))
+    (callable_binding
+      (identifier))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (array
+            (value
+              (string))
+            (value
+              (reference))))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (boolean)))
+            (object_entry
+              (property_name)
+              (value
+                (property_name)))))))))
+
+==================
 Declared types
 ==================
 
@@ -355,7 +402,7 @@ type User
   name:string
   age:number
 
-handler createUser async
+handler createUser
   const body:User value:req.json
 
 ---
@@ -381,9 +428,6 @@ handler createUser async
       (block_keyword))
     (line_item
       (value
-        (property_name)))
-    (line_item
-      (value
         (property_name))))
   (node_line
     (line_name
@@ -402,16 +446,16 @@ handler createUser async
 LLM server outbound HTTP and WebSocket bridge
 ==================
 
-handler chatCompletions async
+handler chatCompletions
   const body value:req.json
   http upstream method:"post" base:env.OPENROUTER_BASE_URL path:"/api/v1/chat/completions" bearer:env.OPENROUTER_API_KEY json:body mode:"proxy"
-  return response proxy:upstream
+  return proxy:upstream
 
 websocket "/api/v1/agent/ws"
   message ws
-    let request = ws.json
+    ws request source:"json"
     send ws json:{ event:"started" requestId:request.requestId requestType:request.requestType model:request.model payload:{ stream:request.stream } }
-    let chat = agent.chat request
+    agent chat source:"chat" request:request
     http upstream method:"post" base:env.OPENROUTER_BASE_URL path:"/api/v1/chat/completions" bearer:env.OPENROUTER_API_KEY json:chat mode:"proxy"
     bridge sse:upstream to:ws requestId:request.requestId requestType:request.requestType model:request.model
 
@@ -421,9 +465,6 @@ websocket "/api/v1/agent/ws"
   (node_line
     (line_name
       (block_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (value
         (property_name))))
@@ -475,9 +516,6 @@ websocket "/api/v1/agent/ws"
     (line_name
       (fn_keyword))
     (line_item
-      (value
-        (property_name)))
-    (line_item
       (prop
         (property_name)
         (value
@@ -495,17 +533,15 @@ websocket "/api/v1/agent/ws"
       (value
         (property_name))))
   (node_line
-    (line_name
-      (fn_keyword))
+    (callable_name
+      (identifier))
+    (callable_binding
+      (identifier))
     (line_item
-      (value
-        (property_name)))
-    (line_item
-      (value
-        (text_fragment)))
-    (line_item
-      (value
-        (host_function))))
+      (prop
+        (property_name)
+        (value
+          (string)))))
   (node_line
     (line_name
       (fn_keyword))
@@ -542,20 +578,20 @@ websocket "/api/v1/agent/ws"
                     (value
                       (reference)))))))))))
   (node_line
-    (line_name
-      (fn_keyword))
+    (callable_name
+      (identifier))
+    (callable_binding
+      (identifier))
     (line_item
-      (value
-        (property_name)))
+      (prop
+        (property_name)
+        (value
+          (string))))
     (line_item
-      (value
-        (text_fragment)))
-    (line_item
-      (value
-        (host_function)))
-    (line_item
-      (value
-        (property_name))))
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
   (node_line
     (line_name
       (fn_keyword))
@@ -625,9 +661,9 @@ websocket "/api/v1/agent/ws"
 General server outbound HTTP request
 ==================
 
-handler fetchProducts async
+handler fetchProducts
   http upstream method:"get" base:env.CATALOG_BASE_URL path:"/products" headers:[{ name:"Accept" value:"application/json" }] redirect:"manual" timeoutMs:5000 mode:"json"
-  return response json:upstream
+  return json:upstream
 
 ---
 
@@ -635,9 +671,6 @@ handler fetchProducts async
   (node_line
     (line_name
       (block_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (value
         (property_name))))
@@ -696,9 +729,6 @@ handler fetchProducts async
     (line_name
       (fn_keyword))
     (line_item
-      (value
-        (property_name)))
-    (line_item
       (prop
         (property_name)
         (value
@@ -709,7 +739,7 @@ Server function modules
 ==================
 
 fn listTickets
-  let rows = listTicketsRepository args:{ status:args.status }
+  listTicketsRepository rows args:{ status:args.status }
   return value:{ ok:true data:rows }
 
 fn listTicketsRepository
@@ -727,17 +757,10 @@ fn listTicketsRepository
       (value
         (property_name))))
   (node_line
-    (line_name
-      (fn_keyword))
-    (line_item
-      (value
-        (property_name)))
-    (line_item
-      (value
-        (text_fragment)))
-    (line_item
-      (value
-        (property_name)))
+    (callable_name
+      (identifier))
+    (callable_binding
+      (identifier))
     (line_item
       (prop
         (property_name)
@@ -960,14 +983,14 @@ database appDb provider:"postgres" host:env.POSTGRES_HOST port:env.POSTGRES_PORT
 Media proxy server primitives
 ==================
 
-handler dashSegment async
-  let query = req.query
-  let raw = req.rawQuery
-  let session = req.cookie name:"session"
+handler dashSegment
+  request query source:"query"
+  request raw source:"rawQuery"
+  request session source:"cookie" name:"session"
   http upstream method:"get" base:env.MEDIA_BASE_URL path:"/segment.m4s" mode:"bytes"
   crypto decrypted encryption:"cencAesCtr" data:upstream key:env.MEDIA_KEY iv:env.MEDIA_IV subsamples:[{ clear:5 encrypted:1024 }]
   spawn ffmpeg command:"ffmpeg" args:["-version"] timeoutMs:5000
-  return response bytes:decrypted contentType:"video/mp4"
+  return bytes:decrypted contentType:"video/mp4"
 
 ---
 
@@ -975,9 +998,6 @@ handler dashSegment async
   (node_line
     (line_name
       (block_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (value
         (property_name))))
@@ -988,11 +1008,10 @@ handler dashSegment async
       (value
         (property_name)))
     (line_item
-      (value
-        (text_fragment)))
-    (line_item
-      (value
-        (host_function))))
+      (prop
+        (property_name)
+        (value
+          (string)))))
   (node_line
     (line_name
       (fn_keyword))
@@ -1000,11 +1019,10 @@ handler dashSegment async
       (value
         (property_name)))
     (line_item
-      (value
-        (text_fragment)))
-    (line_item
-      (value
-        (host_function))))
+      (prop
+        (property_name)
+        (value
+          (string)))))
   (node_line
     (line_name
       (fn_keyword))
@@ -1012,11 +1030,10 @@ handler dashSegment async
       (value
         (property_name)))
     (line_item
-      (value
-        (text_fragment)))
-    (line_item
-      (value
-        (host_function)))
+      (prop
+        (property_name)
+        (value
+          (string))))
     (line_item
       (prop
         (property_name)
@@ -1115,9 +1132,6 @@ handler dashSegment async
   (node_line
     (line_name
       (fn_keyword))
-    (line_item
-      (value
-        (property_name)))
     (line_item
       (prop
         (property_name)
@@ -1315,3 +1329,39 @@ kv saved conn:appCache.set key:"appointment:1" value:{ patientName:"Ana" }
               (property_name)
               (value
                 (string)))))))))
+
+==================
+Session verification declaration
+==================
+
+session verified cache:appCache database:appDb token:token maxAge:2592000
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))))

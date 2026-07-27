@@ -349,21 +349,58 @@
       }
     },
     "node_line": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "line_name"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "line_name"
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "line_item"
+              }
+            }
+          ]
         },
         {
-          "type": "REPEAT",
+          "type": "PREC",
+          "value": 2,
           "content": {
-            "type": "SYMBOL",
-            "name": "line_item"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "name",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "callable_name"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "binding",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "callable_binding"
+                }
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "line_item"
+                }
+              }
+            ]
           }
         }
       ]
@@ -1600,6 +1637,10 @@
         },
         {
           "type": "STRING",
+          "value": "session"
+        },
+        {
+          "type": "STRING",
           "value": "send"
         },
         {
@@ -2058,6 +2099,18 @@
           "value": "[A-Z][A-Za-z0-9_]*"
         }
       }
+    },
+    "callable_name": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      }
+    },
+    "callable_binding": {
+      "type": "SYMBOL",
+      "name": "identifier"
     },
     "property_name": {
       "type": "TOKEN",
