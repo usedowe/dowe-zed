@@ -2731,3 +2731,46 @@ layout AppLayout
         (property_name)
         (value
           (property_name))))))
+
+==================
+External banner
+==================
+
+page bannerPage
+  Banner href:"https://dowe.dev/cloud" label:"Explore Dowe Cloud" p:6
+    Text
+      "Build beyond code"
+
+---
+
+(source_file
+  (node_line
+    name: (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    name: (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    name: (line_name
+      (component_name)))
+  (text_line
+    text: (text_token
+      (string))))

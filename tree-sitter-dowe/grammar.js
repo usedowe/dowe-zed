@@ -403,6 +403,7 @@ module.exports = grammar({
         "Divider",
         "Button",
         "Brand",
+        "Banner",
         "IconButton",
         "Alert",
         "Title",

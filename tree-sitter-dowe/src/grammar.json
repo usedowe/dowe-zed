@@ -2059,6 +2059,10 @@
             },
             {
               "type": "STRING",
+              "value": "Banner"
+            },
+            {
+              "type": "STRING",
               "value": "IconButton"
             },
             {
