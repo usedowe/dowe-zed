@@ -250,6 +250,7 @@ module.exports = grammar({
         "scheme",
         "variant",
         "translation",
+        "meta",
         "children",
         "start",
         "center",

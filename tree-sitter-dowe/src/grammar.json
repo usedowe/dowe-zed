@@ -1438,6 +1438,10 @@
         },
         {
           "type": "STRING",
+          "value": "meta"
+        },
+        {
+          "type": "STRING",
           "value": "children"
         },
         {

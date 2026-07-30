@@ -2774,3 +2774,58 @@ page bannerPage
   (text_line
     text: (text_token
       (string))))
+==================
+Web metadata
+==================
+
+layout HomeLayout
+  meta name:"title" content:"Dowe"
+  meta name:"og:image" content:"/images/og.png"
+  Scaffold
+    main
+      children
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (node_line
+    (line_name
+      (root_keyword)))
+  (node_line
+    (line_name
+      (block_keyword))))
