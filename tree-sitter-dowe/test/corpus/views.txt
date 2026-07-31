@@ -785,6 +785,58 @@ page accountPage
       (string))))
 
 ==================
+Stepper
+==================
+
+page onboardingPage
+  Stepper scheme:"primary" orientation:"horizontal"
+    step id:"account" label:"Account"
+      Text
+        "Account"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+==================
 Table
 ==================
 
@@ -2829,3 +2881,40 @@ layout HomeLayout
   (node_line
     (line_name
       (block_keyword))))
+
+=======================
+View function redirect
+=======================
+
+page HomePage
+  init
+    redirect path:"/login"
+  Text
+    "Home"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (block_keyword)))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))

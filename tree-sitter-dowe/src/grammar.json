@@ -1543,6 +1543,10 @@
         },
         {
           "type": "STRING",
+          "value": "step"
+        },
+        {
+          "type": "STRING",
           "value": "slide"
         },
         {
@@ -1622,6 +1626,10 @@
         {
           "type": "STRING",
           "value": "reset"
+        },
+        {
+          "type": "STRING",
+          "value": "redirect"
         },
         {
           "type": "STRING",
@@ -1752,6 +1760,10 @@
             {
               "type": "STRING",
               "value": "Tabs"
+            },
+            {
+              "type": "STRING",
+              "value": "Stepper"
             },
             {
               "type": "STRING",

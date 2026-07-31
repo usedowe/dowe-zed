@@ -1196,6 +1196,10 @@
     "named": false
   },
   {
+    "type": "redirect",
+    "named": false
+  },
+  {
     "type": "reference",
     "named": true
   },
@@ -1269,6 +1273,10 @@
   },
   {
     "type": "start",
+    "named": false
+  },
+  {
+    "type": "step",
     "named": false
   },
   {
