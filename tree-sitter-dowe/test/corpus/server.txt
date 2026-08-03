@@ -1,4 +1,69 @@
 ==================
+Password hashing
+==================
+
+password passwordHash source:"hash" value:body.password
+password verified source:"verify" value:body.password hash:user.passwordHash required:true
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (body_keyword))))
+    (line_item
+      (value
+        (punctuation)))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (body_keyword))))
+    (line_item
+      (value
+        (punctuation)))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))))
+
+==================
 Multiple imports
 ==================
 
@@ -9,13 +74,17 @@ import { readBlog, updateBlog } from "../handlers/blogs"
 
 (source_file
   (import_statement
+    (import_keyword)
     (identifier)
     (identifier)
+    (from_keyword)
     (import_path))
   (import_statement
+    (import_keyword)
     (import_specifiers
       (identifier)
       (identifier))
+    (from_keyword)
     (import_path)))
 
 ==================
@@ -26,11 +95,11 @@ main
   server port:443
     tls:
       mode:"acme"
-      domains:["example.com", "www.example.com"]
       email:"admin@example.com"
       staging:false
-      domainsFrom:{ kv:"domains" key:"tls" }
-      refreshSeconds:60
+      domainsFrom:{ endpoint:env.CLOUD_API_URL path:"/v1/domains" bearer:env.CLOUD_TOKEN timeoutMs:5000 }
+      refreshSeconds:30
+      httpPort:80
 
 ---
 
@@ -64,17 +133,6 @@ main
         (type_field_key
           (type_field_name))
         (value
-          (array
-            (value
-              (string))
-            (value
-              (string)))))))
-  (node_line
-    (line_name
-      (type_field
-        (type_field_key
-          (type_field_name))
-        (value
           (string)))))
   (node_line
     (line_name
@@ -92,16 +150,32 @@ main
             (object_entry
               (property_name)
               (value
+                (reference)))
+            (object_entry
+              (property_name)
+              (value
                 (string)))
             (object_entry
               (property_name)
               (value
-                (string))))))))
+                (reference)))
+            (object_entry
+              (property_name)
+              (value
+                (number))))))))
   (node_line
     (line_name
       (type_field
         (type_field_key
           (type_field_name))
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (prop
+        (property_name)
         (value
           (number))))))
 
@@ -441,6 +515,35 @@ handler createUser
         (property_name)
         (value
           (reference))))))
+
+==================
+Queue service host
+==================
+
+main
+  server port:4150
+    queue service
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))))
 
 ==================
 LLM server outbound HTTP and WebSocket bridge
@@ -1144,10 +1247,12 @@ handler dashSegment
           (string))))))
 
 ==================
-Server background jobs
+Server tasks and cron
 ==================
 
-go cleanup args:{ source:"startup" }
+task cleanup args:{ source:"startup" } after:"headers"
+task args:{ source:"startup" }
+  log args.source
 cron cleanup schedule:"0 3 * * *" args:{ retentionDays:30 }
 
 ---
@@ -1167,7 +1272,30 @@ cron cleanup schedule:"0 3 * * *" args:{ retentionDays:30 }
             (object_entry
               (property_name)
               (value
+                (string)))))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
                 (string))))))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (reference))))
   (node_line
     (line_name
       (fn_keyword))
@@ -1365,3 +1493,206 @@ session verified cache:appCache database:appDb token:token maxAge:2592000
         (property_name)
         (value
           (number))))))
+
+==================
+File storage and cache reverse proxy
+==================
+
+request payload source:"bytes"
+file stored source:"write" root:env.STORAGE_ROOT path:req.params.hash data:payload sha256:req.params.hash
+kv route conn:RouteCache.get key:host required:true
+return reverse:route.upstreams strategy:"roundRobin" state:route.state loadingUrl:route.loadingUrl errorUrl:route.errorUrl
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))))
+
+==================
+Queue application publication
+==================
+
+handler enqueueNotification
+  queue appQueue provider:"dowe" host:env.QUEUE_HOST port:env.QUEUE_PORT account:env.QUEUE_USER secret:env.QUEUE_PASSWORD vhost:env.QUEUE_VHOST
+  msg sent conn:appQueue.publish queue:"notifications" payload:{ userId:"123" event:"user_created" }
+  return json:{ ok:sent.ok messageId:sent.id }
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (value
+        (property_name)))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference)))))
+  (node_line
+    (callable_name
+      (identifier))
+    (callable_binding
+      (identifier))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (string)))
+            (object_entry
+              (property_name)
+              (value
+                (string))))))))
+  (node_line
+    (line_name
+      (fn_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (reference)))
+            (object_entry
+              (property_name)
+              (value
+                (reference)))))))))

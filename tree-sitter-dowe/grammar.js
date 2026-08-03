@@ -44,16 +44,20 @@ module.exports = grammar({
     translation_key_line: ($) =>
       prec.right(seq(field("name", $.identifier), optional($.string))),
     import_statement: ($) =>
-      seq("import", choice($.import_specifiers, seq($.identifier, repeat(seq(",", $.identifier)))), "from", $.import_path),
+      prec(10, seq($.import_keyword, choice($.import_specifiers, seq($.identifier, repeat(seq(",", $.identifier)))), $.from_keyword, $.import_path)),
+    import_keyword: ($) => token(prec(10, "import")),
+    from_keyword: ($) => token(prec(10, "from")),
     import_specifiers: ($) => seq("{", $.identifier, repeat(seq(",", $.identifier)), "}"),
     type_declaration: ($) => seq($.type_keyword, $.type_name),
     code_property_line: ($) =>
-      prec(6, seq(alias(choice("scheme", "content", "template", "copyLabel", "copiedLabel"), $.property_name), ":", $.value)),
+      prec(10, seq(alias($.code_property_name, $.property_name), ":", $.value)),
+    code_property_name: ($) =>
+      token(prec(10, choice("scheme", "content", "template", "copyLabel", "copiedLabel"))),
     node_line: ($) =>
       choice(
-        seq(field("name", $.line_name), repeat($.line_item)),
+        prec(5, seq(field("name", $.line_name), repeat($.line_item))),
         prec(
-          2,
+          1,
           seq(
             field("name", $.callable_name),
             field("binding", $.callable_binding),
@@ -66,6 +70,7 @@ module.exports = grammar({
         $.type_field,
         $.root_keyword,
         $.block_keyword,
+        alias($.code_property_name, $.block_keyword),
         $.control_keyword,
         $.fn_keyword,
         $.component_name,
@@ -198,7 +203,7 @@ module.exports = grammar({
     body_block_keyword: ($) => token(prec(6, "body")),
     text_fragment: ($) => token(prec(-2, /[^ \r\n\t\[\]\{\}",:\/]+/)),
     root_keyword: ($) =>
-      choice(
+      choice(token(prec(5, choice(
         "main",
         "views",
         "translations",
@@ -208,11 +213,12 @@ module.exports = grammar({
         "store",
         "entity",
         "seeder",
-        "test",
+        "test"
+      ))),
         $.type_keyword,
       ),
     block_keyword: ($) =>
-      choice(
+      choice(token(prec(5, choice(
         "desktop",
         "server",
         "tls",
@@ -260,7 +266,6 @@ module.exports = grammar({
         "bottomBar",
         "overlays",
         "header",
-        alias($.body_block_keyword, "body"),
         "footer",
         "item",
         "mark",
@@ -277,22 +282,25 @@ module.exports = grammar({
         "tab",
         "step",
         "slide",
-        "assert",
-      ),
-    control_keyword: ($) => choice("if", "else", "each"),
+        "assert"
+      ))), alias($.body_block_keyword, "body")),
+    control_keyword: ($) => token(prec(5, choice("if", "else", "each"))),
     fn_keyword: ($) =>
-      choice(
+      token(prec(5, choice(
         "signal",
         "database",
         "insert",
         "cache",
         "kv",
         "vector",
+        "queue",
         "emb",
         "query",
         "const",
         "fn",
         "request",
+        "file",
+        "password",
         "set",
         "reset",
         "redirect",
@@ -303,7 +311,7 @@ module.exports = grammar({
         "session",
         "send",
         "bridge",
-        "go",
+        "task",
         "cron",
         "response",
         "jwt",
@@ -318,8 +326,8 @@ module.exports = grammar({
         "open",
         "message",
         "close",
-        "drain",
-      ),
+        "drain"
+      ))),
     component_name: ($) =>
       token(prec(3, choice(
         "Box",

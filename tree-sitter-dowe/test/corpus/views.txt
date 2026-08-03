@@ -1010,23 +1010,25 @@ translations default:true
 ---
 
 (source_file
-  (translation_catalog
-    (translation_root
-      (line_item
-        (prop
-          (property_name)
-          (value
-            (boolean)))))
-    (translation_line
-      (translation_key_line
-        (identifier)))
-    (translation_line
-      (translation_key_line
-        (identifier)))
-    (translation_line
-      (translation_key_line
-        (identifier)
-        (string)))))
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean)))))
+  (text_line
+    (text_token
+      (identifier)))
+  (text_line
+    (text_token
+      (identifier)))
+  (text_line
+    (text_token
+      (identifier))
+    (text_token
+      (string))))
 
 ==================
 Drawer
@@ -2362,7 +2364,9 @@ store session type:SessionState persistent:true value:{ authorization:"" }
 
 (source_file
   (import_statement
+    (import_keyword)
     (identifier)
+    (from_keyword)
     (import_path))
   (node_line
     name: (line_name
@@ -2675,7 +2679,9 @@ layout ViewsLayout
 
 (source_file
   (import_statement
+    (import_keyword)
     (identifier)
+    (from_keyword)
     (import_path))
   (node_line
     name: (line_name
@@ -2797,13 +2803,13 @@ page bannerPage
 
 (source_file
   (node_line
-    name: (line_name
+    (line_name
       (root_keyword))
     (line_item
       (value
         (property_name))))
   (node_line
-    name: (line_name
+    (line_name
       (component_name))
     (line_item
       (prop
@@ -2821,11 +2827,12 @@ page bannerPage
         (value
           (number)))))
   (node_line
-    name: (line_name
+    (line_name
       (component_name)))
   (text_line
-    text: (text_token
+    (text_token
       (string))))
+
 ==================
 Web metadata
 ==================

@@ -205,55 +205,81 @@
       }
     },
     "import_statement": {
-      "type": "SEQ",
-      "members": [
-        {
+      "type": "PREC",
+      "value": 10,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "import_keyword"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "import_specifiers"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "identifier"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "from_keyword"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "import_path"
+          }
+        ]
+      }
+    },
+    "import_keyword": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 10,
+        "content": {
           "type": "STRING",
           "value": "import"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "import_specifiers"
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "identifier"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
+        }
+      }
+    },
+    "from_keyword": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 10,
+        "content": {
           "type": "STRING",
           "value": "from"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "import_path"
         }
-      ]
+      }
     },
     "import_specifiers": {
       "type": "SEQ",
@@ -303,36 +329,15 @@
     },
     "code_property_line": {
       "type": "PREC",
-      "value": 6,
+      "value": 10,
       "content": {
         "type": "SEQ",
         "members": [
           {
             "type": "ALIAS",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "scheme"
-                },
-                {
-                  "type": "STRING",
-                  "value": "content"
-                },
-                {
-                  "type": "STRING",
-                  "value": "template"
-                },
-                {
-                  "type": "STRING",
-                  "value": "copyLabel"
-                },
-                {
-                  "type": "STRING",
-                  "value": "copiedLabel"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "code_property_name"
             },
             "named": true,
             "value": "property_name"
@@ -348,32 +353,68 @@
         ]
       }
     },
+    "code_property_name": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 10,
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "scheme"
+            },
+            {
+              "type": "STRING",
+              "value": "content"
+            },
+            {
+              "type": "STRING",
+              "value": "template"
+            },
+            {
+              "type": "STRING",
+              "value": "copyLabel"
+            },
+            {
+              "type": "STRING",
+              "value": "copiedLabel"
+            }
+          ]
+        }
+      }
+    },
     "node_line": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "name",
-              "content": {
-                "type": "SYMBOL",
-                "name": "line_name"
+          "type": "PREC",
+          "value": 5,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "name",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "line_name"
+                }
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "line_item"
+                }
               }
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "line_item"
-              }
-            }
-          ]
+            ]
+          }
         },
         {
           "type": "PREC",
-          "value": 2,
+          "value": 1,
           "content": {
             "type": "SEQ",
             "members": [
@@ -419,6 +460,15 @@
         {
           "type": "SYMBOL",
           "name": "block_keyword"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "code_property_name"
+          },
+          "named": true,
+          "value": "block_keyword"
         },
         {
           "type": "SYMBOL",
@@ -1240,44 +1290,56 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "main"
-        },
-        {
-          "type": "STRING",
-          "value": "views"
-        },
-        {
-          "type": "STRING",
-          "value": "translations"
-        },
-        {
-          "type": "STRING",
-          "value": "layout"
-        },
-        {
-          "type": "STRING",
-          "value": "page"
-        },
-        {
-          "type": "STRING",
-          "value": "component"
-        },
-        {
-          "type": "STRING",
-          "value": "store"
-        },
-        {
-          "type": "STRING",
-          "value": "entity"
-        },
-        {
-          "type": "STRING",
-          "value": "seeder"
-        },
-        {
-          "type": "STRING",
-          "value": "test"
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 5,
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "main"
+                },
+                {
+                  "type": "STRING",
+                  "value": "views"
+                },
+                {
+                  "type": "STRING",
+                  "value": "translations"
+                },
+                {
+                  "type": "STRING",
+                  "value": "layout"
+                },
+                {
+                  "type": "STRING",
+                  "value": "page"
+                },
+                {
+                  "type": "STRING",
+                  "value": "component"
+                },
+                {
+                  "type": "STRING",
+                  "value": "store"
+                },
+                {
+                  "type": "STRING",
+                  "value": "entity"
+                },
+                {
+                  "type": "STRING",
+                  "value": "seeder"
+                },
+                {
+                  "type": "STRING",
+                  "value": "test"
+                }
+              ]
+            }
+          }
         },
         {
           "type": "SYMBOL",
@@ -1289,192 +1351,272 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "desktop"
-        },
-        {
-          "type": "STRING",
-          "value": "server"
-        },
-        {
-          "type": "STRING",
-          "value": "tls"
-        },
-        {
-          "type": "STRING",
-          "value": "route"
-        },
-        {
-          "type": "STRING",
-          "value": "endpoints"
-        },
-        {
-          "type": "STRING",
-          "value": "method"
-        },
-        {
-          "type": "STRING",
-          "value": "get"
-        },
-        {
-          "type": "STRING",
-          "value": "post"
-        },
-        {
-          "type": "STRING",
-          "value": "put"
-        },
-        {
-          "type": "STRING",
-          "value": "patch"
-        },
-        {
-          "type": "STRING",
-          "value": "delete"
-        },
-        {
-          "type": "STRING",
-          "value": "handler"
-        },
-        {
-          "type": "STRING",
-          "value": "middleware"
-        },
-        {
-          "type": "STRING",
-          "value": "websocket"
-        },
-        {
-          "type": "STRING",
-          "value": "udp"
-        },
-        {
-          "type": "STRING",
-          "value": "tcp"
-        },
-        {
-          "type": "STRING",
-          "value": "packet"
-        },
-        {
-          "type": "STRING",
-          "value": "connection"
-        },
-        {
-          "type": "STRING",
-          "value": "rtp"
-        },
-        {
-          "type": "STRING",
-          "value": "model"
-        },
-        {
-          "type": "STRING",
-          "value": "init"
-        },
-        {
-          "type": "STRING",
-          "value": "app"
-        },
-        {
-          "type": "STRING",
-          "value": "fonts"
-        },
-        {
-          "type": "STRING",
-          "value": "env"
-        },
-        {
-          "type": "STRING",
-          "value": "variable"
-        },
-        {
-          "type": "STRING",
-          "value": "cors"
-        },
-        {
-          "type": "STRING",
-          "value": "design"
-        },
-        {
-          "type": "STRING",
-          "value": "theme"
-        },
-        {
-          "type": "STRING",
-          "value": "colors"
-        },
-        {
-          "type": "STRING",
-          "value": "radius"
-        },
-        {
-          "type": "STRING",
-          "value": "shadow"
-        },
-        {
-          "type": "STRING",
-          "value": "shadowColor"
-        },
-        {
-          "type": "STRING",
-          "value": "border"
-        },
-        {
-          "type": "STRING",
-          "value": "borderColor"
-        },
-        {
-          "type": "STRING",
-          "value": "scheme"
-        },
-        {
-          "type": "STRING",
-          "value": "variant"
-        },
-        {
-          "type": "STRING",
-          "value": "translation"
-        },
-        {
-          "type": "STRING",
-          "value": "meta"
-        },
-        {
-          "type": "STRING",
-          "value": "children"
-        },
-        {
-          "type": "STRING",
-          "value": "start"
-        },
-        {
-          "type": "STRING",
-          "value": "center"
-        },
-        {
-          "type": "STRING",
-          "value": "end"
-        },
-        {
-          "type": "STRING",
-          "value": "appBar"
-        },
-        {
-          "type": "STRING",
-          "value": "main"
-        },
-        {
-          "type": "STRING",
-          "value": "bottomBar"
-        },
-        {
-          "type": "STRING",
-          "value": "overlays"
-        },
-        {
-          "type": "STRING",
-          "value": "header"
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 5,
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "desktop"
+                },
+                {
+                  "type": "STRING",
+                  "value": "server"
+                },
+                {
+                  "type": "STRING",
+                  "value": "tls"
+                },
+                {
+                  "type": "STRING",
+                  "value": "route"
+                },
+                {
+                  "type": "STRING",
+                  "value": "endpoints"
+                },
+                {
+                  "type": "STRING",
+                  "value": "method"
+                },
+                {
+                  "type": "STRING",
+                  "value": "get"
+                },
+                {
+                  "type": "STRING",
+                  "value": "post"
+                },
+                {
+                  "type": "STRING",
+                  "value": "put"
+                },
+                {
+                  "type": "STRING",
+                  "value": "patch"
+                },
+                {
+                  "type": "STRING",
+                  "value": "delete"
+                },
+                {
+                  "type": "STRING",
+                  "value": "handler"
+                },
+                {
+                  "type": "STRING",
+                  "value": "middleware"
+                },
+                {
+                  "type": "STRING",
+                  "value": "websocket"
+                },
+                {
+                  "type": "STRING",
+                  "value": "udp"
+                },
+                {
+                  "type": "STRING",
+                  "value": "tcp"
+                },
+                {
+                  "type": "STRING",
+                  "value": "packet"
+                },
+                {
+                  "type": "STRING",
+                  "value": "connection"
+                },
+                {
+                  "type": "STRING",
+                  "value": "rtp"
+                },
+                {
+                  "type": "STRING",
+                  "value": "model"
+                },
+                {
+                  "type": "STRING",
+                  "value": "init"
+                },
+                {
+                  "type": "STRING",
+                  "value": "app"
+                },
+                {
+                  "type": "STRING",
+                  "value": "fonts"
+                },
+                {
+                  "type": "STRING",
+                  "value": "env"
+                },
+                {
+                  "type": "STRING",
+                  "value": "variable"
+                },
+                {
+                  "type": "STRING",
+                  "value": "cors"
+                },
+                {
+                  "type": "STRING",
+                  "value": "design"
+                },
+                {
+                  "type": "STRING",
+                  "value": "theme"
+                },
+                {
+                  "type": "STRING",
+                  "value": "colors"
+                },
+                {
+                  "type": "STRING",
+                  "value": "radius"
+                },
+                {
+                  "type": "STRING",
+                  "value": "shadow"
+                },
+                {
+                  "type": "STRING",
+                  "value": "shadowColor"
+                },
+                {
+                  "type": "STRING",
+                  "value": "border"
+                },
+                {
+                  "type": "STRING",
+                  "value": "borderColor"
+                },
+                {
+                  "type": "STRING",
+                  "value": "scheme"
+                },
+                {
+                  "type": "STRING",
+                  "value": "variant"
+                },
+                {
+                  "type": "STRING",
+                  "value": "translation"
+                },
+                {
+                  "type": "STRING",
+                  "value": "meta"
+                },
+                {
+                  "type": "STRING",
+                  "value": "children"
+                },
+                {
+                  "type": "STRING",
+                  "value": "start"
+                },
+                {
+                  "type": "STRING",
+                  "value": "center"
+                },
+                {
+                  "type": "STRING",
+                  "value": "end"
+                },
+                {
+                  "type": "STRING",
+                  "value": "appBar"
+                },
+                {
+                  "type": "STRING",
+                  "value": "main"
+                },
+                {
+                  "type": "STRING",
+                  "value": "bottomBar"
+                },
+                {
+                  "type": "STRING",
+                  "value": "overlays"
+                },
+                {
+                  "type": "STRING",
+                  "value": "header"
+                },
+                {
+                  "type": "STRING",
+                  "value": "footer"
+                },
+                {
+                  "type": "STRING",
+                  "value": "item"
+                },
+                {
+                  "type": "STRING",
+                  "value": "mark"
+                },
+                {
+                  "type": "STRING",
+                  "value": "marker"
+                },
+                {
+                  "type": "STRING",
+                  "value": "waypoint"
+                },
+                {
+                  "type": "STRING",
+                  "value": "divider"
+                },
+                {
+                  "type": "STRING",
+                  "value": "trigger"
+                },
+                {
+                  "type": "STRING",
+                  "value": "group"
+                },
+                {
+                  "type": "STRING",
+                  "value": "submenu"
+                },
+                {
+                  "type": "STRING",
+                  "value": "megamenu"
+                },
+                {
+                  "type": "STRING",
+                  "value": "icon"
+                },
+                {
+                  "type": "STRING",
+                  "value": "content"
+                },
+                {
+                  "type": "STRING",
+                  "value": "column"
+                },
+                {
+                  "type": "STRING",
+                  "value": "tab"
+                },
+                {
+                  "type": "STRING",
+                  "value": "step"
+                },
+                {
+                  "type": "STRING",
+                  "value": "slide"
+                },
+                {
+                  "type": "STRING",
+                  "value": "assert"
+                }
+              ]
+            }
+          }
         },
         {
           "type": "ALIAS",
@@ -1484,246 +1626,204 @@
           },
           "named": false,
           "value": "body"
-        },
-        {
-          "type": "STRING",
-          "value": "footer"
-        },
-        {
-          "type": "STRING",
-          "value": "item"
-        },
-        {
-          "type": "STRING",
-          "value": "mark"
-        },
-        {
-          "type": "STRING",
-          "value": "marker"
-        },
-        {
-          "type": "STRING",
-          "value": "waypoint"
-        },
-        {
-          "type": "STRING",
-          "value": "divider"
-        },
-        {
-          "type": "STRING",
-          "value": "trigger"
-        },
-        {
-          "type": "STRING",
-          "value": "group"
-        },
-        {
-          "type": "STRING",
-          "value": "submenu"
-        },
-        {
-          "type": "STRING",
-          "value": "megamenu"
-        },
-        {
-          "type": "STRING",
-          "value": "icon"
-        },
-        {
-          "type": "STRING",
-          "value": "content"
-        },
-        {
-          "type": "STRING",
-          "value": "column"
-        },
-        {
-          "type": "STRING",
-          "value": "tab"
-        },
-        {
-          "type": "STRING",
-          "value": "step"
-        },
-        {
-          "type": "STRING",
-          "value": "slide"
-        },
-        {
-          "type": "STRING",
-          "value": "assert"
         }
       ]
     },
     "control_keyword": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "if"
-        },
-        {
-          "type": "STRING",
-          "value": "else"
-        },
-        {
-          "type": "STRING",
-          "value": "each"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 5,
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "if"
+            },
+            {
+              "type": "STRING",
+              "value": "else"
+            },
+            {
+              "type": "STRING",
+              "value": "each"
+            }
+          ]
         }
-      ]
+      }
     },
     "fn_keyword": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "signal"
-        },
-        {
-          "type": "STRING",
-          "value": "database"
-        },
-        {
-          "type": "STRING",
-          "value": "insert"
-        },
-        {
-          "type": "STRING",
-          "value": "cache"
-        },
-        {
-          "type": "STRING",
-          "value": "kv"
-        },
-        {
-          "type": "STRING",
-          "value": "vector"
-        },
-        {
-          "type": "STRING",
-          "value": "emb"
-        },
-        {
-          "type": "STRING",
-          "value": "query"
-        },
-        {
-          "type": "STRING",
-          "value": "const"
-        },
-        {
-          "type": "STRING",
-          "value": "fn"
-        },
-        {
-          "type": "STRING",
-          "value": "request"
-        },
-        {
-          "type": "STRING",
-          "value": "set"
-        },
-        {
-          "type": "STRING",
-          "value": "reset"
-        },
-        {
-          "type": "STRING",
-          "value": "redirect"
-        },
-        {
-          "type": "STRING",
-          "value": "toast"
-        },
-        {
-          "type": "STRING",
-          "value": "return"
-        },
-        {
-          "type": "STRING",
-          "value": "next"
-        },
-        {
-          "type": "STRING",
-          "value": "bearer"
-        },
-        {
-          "type": "STRING",
-          "value": "session"
-        },
-        {
-          "type": "STRING",
-          "value": "send"
-        },
-        {
-          "type": "STRING",
-          "value": "bridge"
-        },
-        {
-          "type": "STRING",
-          "value": "go"
-        },
-        {
-          "type": "STRING",
-          "value": "cron"
-        },
-        {
-          "type": "STRING",
-          "value": "response"
-        },
-        {
-          "type": "STRING",
-          "value": "jwt"
-        },
-        {
-          "type": "STRING",
-          "value": "http"
-        },
-        {
-          "type": "STRING",
-          "value": "crypto"
-        },
-        {
-          "type": "STRING",
-          "value": "spawn"
-        },
-        {
-          "type": "STRING",
-          "value": "let"
-        },
-        {
-          "type": "STRING",
-          "value": "log"
-        },
-        {
-          "type": "STRING",
-          "value": "info"
-        },
-        {
-          "type": "STRING",
-          "value": "warn"
-        },
-        {
-          "type": "STRING",
-          "value": "error"
-        },
-        {
-          "type": "STRING",
-          "value": "open"
-        },
-        {
-          "type": "STRING",
-          "value": "message"
-        },
-        {
-          "type": "STRING",
-          "value": "close"
-        },
-        {
-          "type": "STRING",
-          "value": "drain"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 5,
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "signal"
+            },
+            {
+              "type": "STRING",
+              "value": "database"
+            },
+            {
+              "type": "STRING",
+              "value": "insert"
+            },
+            {
+              "type": "STRING",
+              "value": "cache"
+            },
+            {
+              "type": "STRING",
+              "value": "kv"
+            },
+            {
+              "type": "STRING",
+              "value": "vector"
+            },
+            {
+              "type": "STRING",
+              "value": "queue"
+            },
+            {
+              "type": "STRING",
+              "value": "emb"
+            },
+            {
+              "type": "STRING",
+              "value": "query"
+            },
+            {
+              "type": "STRING",
+              "value": "const"
+            },
+            {
+              "type": "STRING",
+              "value": "fn"
+            },
+            {
+              "type": "STRING",
+              "value": "request"
+            },
+            {
+              "type": "STRING",
+              "value": "file"
+            },
+            {
+              "type": "STRING",
+              "value": "password"
+            },
+            {
+              "type": "STRING",
+              "value": "set"
+            },
+            {
+              "type": "STRING",
+              "value": "reset"
+            },
+            {
+              "type": "STRING",
+              "value": "redirect"
+            },
+            {
+              "type": "STRING",
+              "value": "toast"
+            },
+            {
+              "type": "STRING",
+              "value": "return"
+            },
+            {
+              "type": "STRING",
+              "value": "next"
+            },
+            {
+              "type": "STRING",
+              "value": "bearer"
+            },
+            {
+              "type": "STRING",
+              "value": "session"
+            },
+            {
+              "type": "STRING",
+              "value": "send"
+            },
+            {
+              "type": "STRING",
+              "value": "bridge"
+            },
+            {
+              "type": "STRING",
+              "value": "task"
+            },
+            {
+              "type": "STRING",
+              "value": "cron"
+            },
+            {
+              "type": "STRING",
+              "value": "response"
+            },
+            {
+              "type": "STRING",
+              "value": "jwt"
+            },
+            {
+              "type": "STRING",
+              "value": "http"
+            },
+            {
+              "type": "STRING",
+              "value": "crypto"
+            },
+            {
+              "type": "STRING",
+              "value": "spawn"
+            },
+            {
+              "type": "STRING",
+              "value": "let"
+            },
+            {
+              "type": "STRING",
+              "value": "log"
+            },
+            {
+              "type": "STRING",
+              "value": "info"
+            },
+            {
+              "type": "STRING",
+              "value": "warn"
+            },
+            {
+              "type": "STRING",
+              "value": "error"
+            },
+            {
+              "type": "STRING",
+              "value": "open"
+            },
+            {
+              "type": "STRING",
+              "value": "message"
+            },
+            {
+              "type": "STRING",
+              "value": "close"
+            },
+            {
+              "type": "STRING",
+              "value": "drain"
+            }
+          ]
         }
-      ]
+      }
     },
     "component_name": {
       "type": "TOKEN",

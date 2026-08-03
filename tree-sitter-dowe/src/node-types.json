@@ -88,16 +88,6 @@
     }
   },
   {
-    "type": "control_keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "fn_keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "identifier",
     "named": true,
     "fields": {}
@@ -126,7 +116,15 @@
       "required": true,
       "types": [
         {
+          "type": "from_keyword",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "import_keyword",
           "named": true
         },
         {
@@ -844,24 +842,8 @@
     "named": false
   },
   {
-    "type": "app",
-    "named": false
-  },
-  {
-    "type": "appBar",
-    "named": false
-  },
-  {
     "type": "array_type_reference",
     "named": true
-  },
-  {
-    "type": "assert",
-    "named": false
-  },
-  {
-    "type": "bearer",
-    "named": false
   },
   {
     "type": "body",
@@ -876,272 +858,36 @@
     "named": true
   },
   {
-    "type": "border",
-    "named": false
-  },
-  {
-    "type": "borderColor",
-    "named": false
-  },
-  {
-    "type": "bottomBar",
-    "named": false
-  },
-  {
-    "type": "bridge",
-    "named": false
-  },
-  {
-    "type": "cache",
-    "named": false
-  },
-  {
-    "type": "center",
-    "named": false
-  },
-  {
-    "type": "children",
-    "named": false
-  },
-  {
-    "type": "close",
-    "named": false
-  },
-  {
-    "type": "colors",
-    "named": false
-  },
-  {
-    "type": "column",
-    "named": false
-  },
-  {
-    "type": "component",
-    "named": false
-  },
-  {
     "type": "component_name",
     "named": true
   },
   {
-    "type": "connection",
-    "named": false
+    "type": "control_keyword",
+    "named": true
   },
   {
-    "type": "const",
-    "named": false
+    "type": "fn_keyword",
+    "named": true
   },
   {
-    "type": "content",
-    "named": false
-  },
-  {
-    "type": "cors",
-    "named": false
-  },
-  {
-    "type": "cron",
-    "named": false
-  },
-  {
-    "type": "crypto",
-    "named": false
-  },
-  {
-    "type": "database",
-    "named": false
-  },
-  {
-    "type": "delete",
-    "named": false
-  },
-  {
-    "type": "design",
-    "named": false
-  },
-  {
-    "type": "desktop",
-    "named": false
-  },
-  {
-    "type": "divider",
-    "named": false
-  },
-  {
-    "type": "drain",
-    "named": false
-  },
-  {
-    "type": "each",
-    "named": false
-  },
-  {
-    "type": "else",
-    "named": false
-  },
-  {
-    "type": "emb",
-    "named": false
-  },
-  {
-    "type": "end",
-    "named": false
-  },
-  {
-    "type": "endpoints",
-    "named": false
-  },
-  {
-    "type": "entity",
-    "named": false
-  },
-  {
-    "type": "env",
-    "named": false
-  },
-  {
-    "type": "error",
-    "named": false
-  },
-  {
-    "type": "fn",
-    "named": false
-  },
-  {
-    "type": "fonts",
-    "named": false
-  },
-  {
-    "type": "footer",
-    "named": false
-  },
-  {
-    "type": "from",
-    "named": false
-  },
-  {
-    "type": "get",
-    "named": false
-  },
-  {
-    "type": "go",
-    "named": false
-  },
-  {
-    "type": "group",
-    "named": false
-  },
-  {
-    "type": "handler",
-    "named": false
-  },
-  {
-    "type": "header",
-    "named": false
+    "type": "from_keyword",
+    "named": true
   },
   {
     "type": "host_function",
     "named": true
   },
   {
-    "type": "http",
-    "named": false
-  },
-  {
-    "type": "icon",
-    "named": false
-  },
-  {
-    "type": "if",
-    "named": false
-  },
-  {
-    "type": "import",
-    "named": false
+    "type": "import_keyword",
+    "named": true
   },
   {
     "type": "import_path",
     "named": true
   },
   {
-    "type": "info",
-    "named": false
-  },
-  {
-    "type": "init",
-    "named": false
-  },
-  {
-    "type": "insert",
-    "named": false
-  },
-  {
-    "type": "item",
-    "named": false
-  },
-  {
-    "type": "jwt",
-    "named": false
-  },
-  {
-    "type": "kv",
-    "named": false
-  },
-  {
-    "type": "layout",
-    "named": false
-  },
-  {
-    "type": "let",
-    "named": false
-  },
-  {
-    "type": "log",
-    "named": false
-  },
-  {
-    "type": "main",
-    "named": false
-  },
-  {
-    "type": "mark",
-    "named": false
-  },
-  {
-    "type": "marker",
-    "named": false
-  },
-  {
-    "type": "megamenu",
-    "named": false
-  },
-  {
-    "type": "message",
-    "named": false
-  },
-  {
-    "type": "meta",
-    "named": false
-  },
-  {
-    "type": "method",
-    "named": false
-  },
-  {
-    "type": "middleware",
-    "named": false
-  },
-  {
-    "type": "model",
-    "named": false
-  },
-  {
     "type": "multiline_string",
     "named": true
-  },
-  {
-    "type": "next",
-    "named": false
   },
   {
     "type": "null",
@@ -1152,176 +898,28 @@
     "named": true
   },
   {
-    "type": "open",
-    "named": false
-  },
-  {
-    "type": "overlays",
-    "named": false
-  },
-  {
-    "type": "packet",
-    "named": false
-  },
-  {
-    "type": "page",
-    "named": false
-  },
-  {
-    "type": "patch",
-    "named": false
-  },
-  {
     "type": "path_literal",
     "named": true
-  },
-  {
-    "type": "post",
-    "named": false
   },
   {
     "type": "property_name",
     "named": true
   },
   {
-    "type": "put",
-    "named": false
-  },
-  {
-    "type": "query",
-    "named": false
-  },
-  {
-    "type": "radius",
-    "named": false
-  },
-  {
-    "type": "redirect",
-    "named": false
-  },
-  {
     "type": "reference",
     "named": true
-  },
-  {
-    "type": "request",
-    "named": false
-  },
-  {
-    "type": "reset",
-    "named": false
-  },
-  {
-    "type": "response",
-    "named": false
-  },
-  {
-    "type": "return",
-    "named": false
-  },
-  {
-    "type": "route",
-    "named": false
-  },
-  {
-    "type": "rtp",
-    "named": false
-  },
-  {
-    "type": "scheme",
-    "named": false
-  },
-  {
-    "type": "seeder",
-    "named": false
-  },
-  {
-    "type": "send",
-    "named": false
-  },
-  {
-    "type": "server",
-    "named": false
-  },
-  {
-    "type": "session",
-    "named": false
-  },
-  {
-    "type": "set",
-    "named": false
-  },
-  {
-    "type": "shadow",
-    "named": false
-  },
-  {
-    "type": "shadowColor",
-    "named": false
-  },
-  {
-    "type": "signal",
-    "named": false
-  },
-  {
-    "type": "slide",
-    "named": false
-  },
-  {
-    "type": "spawn",
-    "named": false
-  },
-  {
-    "type": "start",
-    "named": false
-  },
-  {
-    "type": "step",
-    "named": false
-  },
-  {
-    "type": "store",
-    "named": false
   },
   {
     "type": "string",
     "named": true
   },
   {
-    "type": "submenu",
-    "named": false
-  },
-  {
     "type": "suite_marker",
     "named": true
   },
   {
-    "type": "tab",
-    "named": false
-  },
-  {
-    "type": "tcp",
-    "named": false
-  },
-  {
-    "type": "test",
-    "named": false
-  },
-  {
     "type": "text_fragment",
     "named": true
-  },
-  {
-    "type": "theme",
-    "named": false
-  },
-  {
-    "type": "tls",
-    "named": false
-  },
-  {
-    "type": "toast",
-    "named": false
   },
   {
     "type": "translation",
@@ -1329,10 +927,6 @@
   },
   {
     "type": "translations",
-    "named": false
-  },
-  {
-    "type": "trigger",
     "named": false
   },
   {
@@ -1348,40 +942,8 @@
     "named": true
   },
   {
-    "type": "udp",
-    "named": false
-  },
-  {
     "type": "user_component_name",
     "named": true
-  },
-  {
-    "type": "variable",
-    "named": false
-  },
-  {
-    "type": "variant",
-    "named": false
-  },
-  {
-    "type": "vector",
-    "named": false
-  },
-  {
-    "type": "views",
-    "named": false
-  },
-  {
-    "type": "warn",
-    "named": false
-  },
-  {
-    "type": "waypoint",
-    "named": false
-  },
-  {
-    "type": "websocket",
-    "named": false
   },
   {
     "type": "{",
