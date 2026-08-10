@@ -82,15 +82,15 @@ main
       (prop
         (property_name)
         (value
-          (string))))
-    (line_item
-      (prop
-        (property_name)
-        (value
           (string)))))
   (node_line
     (line_name
       (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
     (line_item
       (prop
         (property_name)
@@ -187,7 +187,7 @@ Layout bars
 ==================
 
 layout AuthLayout
-  AppBar variant:"soft" scheme:"surface" position:"sticky" bordered:true boxed:true
+  AppBar variant:"soft" scheme:"surface" position:"fixed" bordered:true boxed:true floating:true dockOnScroll:true
     start
       Text
         "Dowe"
@@ -234,6 +234,16 @@ layout AuthLayout
         (property_name)
         (value
           (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (boolean))))
     (line_item
       (prop
         (property_name)
@@ -433,7 +443,7 @@ layout AuthLayout
 page loginPage
   Svg viewBox:"0 0 24 24" color:"tertiary" w:8 h:8
     Path d:"M0 0h24v24H0z" fill:"none"
-    Path fill:"currentColor" d:"M22 12c0-5.523-4.477-10-10-10"
+    Path fill:"currentColor" fillRule:"evenodd" d:"M22 12c0-5.523-4.477-10-10-10"
   Svg data:iconData w:8 h:8
 
 ---
@@ -496,6 +506,11 @@ page loginPage
   (node_line
     (line_name
       (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
     (line_item
       (prop
         (property_name)
@@ -780,6 +795,78 @@ page accountPage
   (node_line
     (line_name
       (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+=======================
+Interactive view motion
+=======================
+
+page MotionPage
+  Chip rotate:-7 scale:1.05 translateX:-1.5 translateY:{ xs:0 md:2 } transition:"spring" gesture:"lift" animation:"slideRight" onClick:selectChip
+    "Mobile Apps"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (object
+            (object_entry
+              (property_name)
+              (value
+                (number)))
+            (object_entry
+              (property_name)
+              (value
+                (number)))))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (property_name)))))
   (text_line
     (text_token
       (string))))
@@ -1163,9 +1250,9 @@ page advancedForms
       dragItem id:"ship" label:"Ship"
   Editor label:"Notes" placeholder:"Write notes" minHeight:180
   ImageCropper label:"Avatar" shape:"circle"
-  PasswordField label:"Password" hideStrength:false
-  PhoneField label:"Phone" country:"US"
-  PinField label:"Code" length:6
+  Password label:"Password" hideStrength:false
+  Phone label:"Phone" country:"US"
+  Pin label:"Code" length:6
   Textarea label:"Bio" rows:4 maxLength:160
 
 ---

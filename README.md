@@ -80,7 +80,7 @@ Run local validation:
 The grammar recognizes the built-in view components, including `Section`, `AppBar`, `Footer`, `BottomBar`, `SideNav`, `RailNav`, `Sidebar`, `NavMenu`, `Scaffold`, `Tabs`, `Stepper`, `Drawer`, `Brand`, `Banner`, `Input`, `Slider`, `Dropzone`, `Select`, `Option`, `Video`, `Audio`, `Image`, `Accordion`, `AvatarGroup`, `Carousel`, `ChatBox`, `Checkbox`, `Color`, `Date`, `DateRange`, `Empty`, `Marquee`, `TypeWriter`, `RichText`, `Record`, `ToggleGroup`, `Collapsible`, `Countdown`, `Map`, `RadioGroup`, `Toggle`, `ToggleTheme`, `Fab`, `fabAction`, and `Divider`. Completion and diagnostic support for their props is provided by `dowe-language-server`.
 
 ```text
-AppBar variant:"soft" scheme:"surface" bordered:true boxed:true
+AppBar variant:"soft" scheme:"surface" position:"fixed" bordered:true boxed:true floating:true dockOnScroll:true
   start
     Text
       "Dowe"
@@ -99,7 +99,7 @@ Divider orientation:"vertical" scheme:"primary"
 ToggleTheme variant:"soft" scheme:"secondary"
 Slider bind:volume min:0 max:100 step:5 label:"Volume" scheme:"warning"
 Dropzone accept:"image/*" label:"Images" placeholder:"Drop images" variant:"outlined" scheme:"surface"
-RichText
+RichText title:true size:"5xl"
   mark text:"Launch" style:"grad" scheme:"primary"
 ToggleGroup selected:"map" scheme:"secondary"
   item id:"list" label:"List"
