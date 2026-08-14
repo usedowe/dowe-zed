@@ -17,9 +17,8 @@
 (node_line name: (callable_name (identifier) @function))
 (type_prop (type_keyword) @keyword (type_reference) @type)
 (body_type_binding (body_keyword) @variable (type_reference) @type)
-(type_field
-  (type_field_key) @property
-  (type_reference) @type)
+(type_field (type_field_key) @property)
+(type_field (type_reference) @type)
 (array_type_reference) @type
 (host_function) @function
 (node_line name: (line_name (component_name) @constructor))

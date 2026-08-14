@@ -10,7 +10,8 @@ theme
     Avatar radius:"full" size:"md"
     Chip variant:"soft" scheme:"secondary" radius:"full" size:"sm"
     theme name:"light"
-      colors primary:"#6bc670" onPrimary:"#26201f"
+      colors:
+        primary color:"#6bc670" text:"#26201f" title:"#26201f"
 
 main
   app name:"Clinic Desk" bundle:"com.example.clinic"
@@ -82,15 +83,15 @@ main
       (prop
         (property_name)
         (value
-          (string)))))
-  (node_line
-    (line_name
-      (component_name))
+          (string))))
     (line_item
       (prop
         (property_name)
         (value
-          (string))))
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
     (line_item
       (prop
         (property_name)
@@ -135,6 +136,16 @@ main
   (node_line
     (line_name
       (block_keyword))
+    (line_item
+      (suite_marker)))
+  (node_line
+    (line_name
+      (block_keyword))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
     (line_item
       (prop
         (property_name)
@@ -725,7 +736,7 @@ Tabs
 ==================
 
 page accountPage
-  Tabs variant:"pills" scheme:"primary" position:"top"
+  Tabs position:"top"
     tab id:"overview" label:"Overview"
       Text
         "Overview"
@@ -745,16 +756,6 @@ page accountPage
   (node_line
     (line_name
       (component_name))
-    (line_item
-      (prop
-        (property_name)
-        (value
-          (string))))
-    (line_item
-      (prop
-        (property_name)
-        (value
-          (string))))
     (line_item
       (prop
         (property_name)
@@ -792,6 +793,105 @@ page accountPage
         (property_name)
         (value
           (string)))))
+  (node_line
+    (line_name
+      (component_name)))
+  (text_line
+    (text_token
+      (string))))
+
+=======================
+Multiline visual props
+=======================
+
+page shellPage
+  AppBar:
+    position:"sticky"
+    floating:true
+    boxed:true
+    bordered:true
+    variant:"soft"
+    scheme:"surface"
+    rounded:"full"
+    border:1
+    borderColor:"muted"
+    shadow:"lg"
+    shadowColor:"muted"
+    start
+      Text
+        "Brand"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (suite_marker)))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (type_reference))))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (type_reference))))
+  (code_property_line
+    (property_name)
+    (value
+      (boolean)))
+  (code_property_line
+    (property_name)
+    (value
+      (string)))
+  (code_property_line
+    (property_name)
+    (value
+      (string)))
+  (node_line
+    (line_name
+      (type_field
+        (type_field_key
+          (type_field_name))
+        (value
+          (string)))))
+  (code_property_line
+    (property_name)
+    (value
+      (number)))
+  (code_property_line
+    (property_name)
+    (value
+      (string)))
+  (code_property_line
+    (property_name)
+    (value
+      (string)))
+  (code_property_line
+    (property_name)
+    (value
+      (string)))
+  (node_line
+    (line_name
+      (block_keyword)))
   (node_line
     (line_name
       (component_name)))
@@ -1792,7 +1892,7 @@ Section component
 ==================
 
 page homePage
-  Section background:"aurora" color:"onBackground"
+  Section background:"aurora" color:"backgroundText"
     Text
       "Hero"
 

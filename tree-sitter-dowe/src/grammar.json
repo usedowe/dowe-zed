@@ -380,6 +380,50 @@
             {
               "type": "STRING",
               "value": "copiedLabel"
+            },
+            {
+              "type": "STRING",
+              "value": "background"
+            },
+            {
+              "type": "STRING",
+              "value": "radius"
+            },
+            {
+              "type": "STRING",
+              "value": "shadow"
+            },
+            {
+              "type": "STRING",
+              "value": "shadowColor"
+            },
+            {
+              "type": "STRING",
+              "value": "border"
+            },
+            {
+              "type": "STRING",
+              "value": "bordered"
+            },
+            {
+              "type": "STRING",
+              "value": "borderColor"
+            },
+            {
+              "type": "STRING",
+              "value": "variant"
+            },
+            {
+              "type": "STRING",
+              "value": "group"
+            },
+            {
+              "type": "STRING",
+              "value": "icon"
+            },
+            {
+              "type": "STRING",
+              "value": "step"
             }
           ]
         }
@@ -1473,6 +1517,78 @@
                 {
                   "type": "STRING",
                   "value": "colors"
+                },
+                {
+                  "type": "STRING",
+                  "value": "primary"
+                },
+                {
+                  "type": "STRING",
+                  "value": "secondary"
+                },
+                {
+                  "type": "STRING",
+                  "value": "tertiary"
+                },
+                {
+                  "type": "STRING",
+                  "value": "muted"
+                },
+                {
+                  "type": "STRING",
+                  "value": "background"
+                },
+                {
+                  "type": "STRING",
+                  "value": "surface"
+                },
+                {
+                  "type": "STRING",
+                  "value": "success"
+                },
+                {
+                  "type": "STRING",
+                  "value": "info"
+                },
+                {
+                  "type": "STRING",
+                  "value": "warning"
+                },
+                {
+                  "type": "STRING",
+                  "value": "danger"
+                },
+                {
+                  "type": "STRING",
+                  "value": "softPrimary"
+                },
+                {
+                  "type": "STRING",
+                  "value": "softSecondary"
+                },
+                {
+                  "type": "STRING",
+                  "value": "softTertiary"
+                },
+                {
+                  "type": "STRING",
+                  "value": "softMuted"
+                },
+                {
+                  "type": "STRING",
+                  "value": "softSuccess"
+                },
+                {
+                  "type": "STRING",
+                  "value": "softInfo"
+                },
+                {
+                  "type": "STRING",
+                  "value": "softWarning"
+                },
+                {
+                  "type": "STRING",
+                  "value": "softDanger"
                 },
                 {
                   "type": "STRING",

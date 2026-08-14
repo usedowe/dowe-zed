@@ -847,7 +847,7 @@ fn listTickets
 
 fn listTicketsRepository
   database db provider:"dowe" host:"127.0.0.1" port:4147 account:"api" secret:"secret" name:"support"
-  query rows db:db.list table:"tickets"
+  query rows conn:db.list table:"tickets"
   return value:{ rows:rows }
 
 ---
@@ -1250,10 +1250,10 @@ handler dashSegment
 Server tasks and cron
 ==================
 
-task cleanup args:{ source:"startup" } after:"headers"
+task fn:cleanup args:{ source:"startup" } after:"headers"
 task args:{ source:"startup" }
   log args.source
-cron cleanup schedule:"0 3 * * *" args:{ retentionDays:30 }
+cron fn:cleanup schedule:"0 3 * * *" args:{ retentionDays:30 }
 
 ---
 
@@ -1262,8 +1262,10 @@ cron cleanup schedule:"0 3 * * *" args:{ retentionDays:30 }
     (line_name
       (fn_keyword))
     (line_item
-      (value
-        (property_name)))
+      (prop
+        (property_name)
+        (value
+          (property_name))))
     (line_item
       (prop
         (property_name)
@@ -1300,8 +1302,10 @@ cron cleanup schedule:"0 3 * * *" args:{ retentionDays:30 }
     (line_name
       (fn_keyword))
     (line_item
-      (value
-        (property_name)))
+      (prop
+        (property_name)
+        (value
+          (property_name))))
     (line_item
       (prop
         (property_name)

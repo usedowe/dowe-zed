@@ -18,6 +18,8 @@ Dowe editor support is intentionally split across sibling repositories:
 
 Keep semantic language behavior in `dowe-language-server`. This repository should only own Zed integration, grammar, highlighting, structure, packaging, and local extension installation.
 
+Server Database, Cache, Vector, and Queue operations use the shared `conn:<handle>.<operation>` property namespace. The language server validates the referenced connection and operation.
+
 ## Requirements
 
 - Zed with Rust extension development support.
@@ -121,7 +123,7 @@ Drawer open:drawerOpen position:"start" variant:"soft" scheme:"surface" show:{ x
   footer
     Text
       "Signed in"
-Tabs variant:"pills" scheme:"primary" position:"top"
+Tabs position:"top"
   tab id:"overview" label:"Overview"
     Text
       "Overview"
