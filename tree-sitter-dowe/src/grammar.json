@@ -2183,6 +2183,10 @@
             },
             {
               "type": "STRING",
+              "value": "validate"
+            },
+            {
+              "type": "STRING",
               "value": "ComboBox"
             },
             {

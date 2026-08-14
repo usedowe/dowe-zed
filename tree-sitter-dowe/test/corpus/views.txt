@@ -800,6 +800,50 @@ page accountPage
     (text_token
       (string))))
 
+========================
+Form validation entries
+========================
+
+page ContactPage
+  Input bind:form.email helpText:"Use your work email"
+    validate rule:"required" message:"Email is required"
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (reference))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))))
+
 =======================
 Multiline visual props
 =======================

@@ -423,6 +423,7 @@ module.exports = grammar({
         "Input",
         "Select",
         "Option",
+        "validate",
         "ComboBox",
         "comboOption",
         "CsvField",
