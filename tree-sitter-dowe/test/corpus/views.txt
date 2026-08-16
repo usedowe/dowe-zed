@@ -557,6 +557,8 @@ Media display and form components
 
 page componentsPage
   Audio src:"https://example.com/audio.mp3" scheme:"primary"
+  Camera facing:"user" label:"Take photo"
+  Microphone label:"Record audio" maxDuration:30
   Accordion multiple:true
     item id:"intro" label:"Intro"
       Text
@@ -595,6 +597,32 @@ page componentsPage
         (property_name)
         (value
           (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
   (node_line
     (line_name
       (component_name))

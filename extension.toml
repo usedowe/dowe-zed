@@ -19,7 +19,7 @@ languages = ["Dowe"]
 
 [grammars.dowe]
 repository = "file:///Users/varb/Work/dowe/dowe-zed/.zed-dev/tree-sitter-dowe.git"
-rev = "1c81a0d2ec1d796697eb98121af6dd2d22d1450e"
+rev = "390fc5af3e2eeb6ced420347d09a94614d919d33"
 
 [context_servers]
 

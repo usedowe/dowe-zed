@@ -397,6 +397,8 @@ module.exports = grammar({
         "Dropdown",
         "Command",
         "Audio",
+        "Camera",
+        "Microphone",
         "Image",
         "Accordion",
         "Carousel",

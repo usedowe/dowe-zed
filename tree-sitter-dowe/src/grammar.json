@@ -2079,6 +2079,14 @@
             },
             {
               "type": "STRING",
+              "value": "Camera"
+            },
+            {
+              "type": "STRING",
+              "value": "Microphone"
+            },
+            {
+              "type": "STRING",
               "value": "Image"
             },
             {

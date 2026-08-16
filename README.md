@@ -79,7 +79,7 @@ Run local validation:
 
 ## View Syntax
 
-The grammar recognizes the built-in view components, including `Section`, `AppBar`, `Footer`, `BottomBar`, `SideNav`, `RailNav`, `Sidebar`, `NavMenu`, `Scaffold`, `Tabs`, `Stepper`, `Drawer`, `Brand`, `Banner`, `Input`, `Slider`, `Dropzone`, `Select`, `Option`, `Video`, `Audio`, `Image`, `Accordion`, `AvatarGroup`, `Carousel`, `ChatBox`, `Checkbox`, `Color`, `Date`, `DateRange`, `Empty`, `Marquee`, `TypeWriter`, `RichText`, `Record`, `ToggleGroup`, `Collapsible`, `Countdown`, `Map`, `RadioGroup`, `Toggle`, `ToggleTheme`, `Fab`, `fabAction`, and `Divider`. Completion and diagnostic support for their props is provided by `dowe-language-server`.
+The grammar recognizes the built-in view components, including `Section`, `AppBar`, `Footer`, `BottomBar`, `SideNav`, `RailNav`, `Sidebar`, `NavMenu`, `Scaffold`, `Tabs`, `Stepper`, `Drawer`, `Brand`, `Banner`, `Input`, `Slider`, `Dropzone`, `Select`, `Option`, `Video`, `Audio`, `Camera`, `Microphone`, `Image`, `Accordion`, `AvatarGroup`, `Carousel`, `ChatBox`, `Checkbox`, `Color`, `Date`, `DateRange`, `Empty`, `Marquee`, `TypeWriter`, `RichText`, `Record`, `ToggleGroup`, `Collapsible`, `Countdown`, `Map`, `RadioGroup`, `Toggle`, `ToggleTheme`, `Fab`, `fabAction`, and `Divider`. Completion and diagnostic support for their props is provided by `dowe-language-server`.
 
 ```text
 AppBar variant:"soft" scheme:"surface" position:"fixed" bordered:true boxed:true floating:true dockOnScroll:true
