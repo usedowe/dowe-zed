@@ -828,6 +828,29 @@ page accountPage
     (text_token
       (string))))
 
+=======================
+Whitespace-separated arrays
+=======================
+
+main
+  views:[siteRoutes docsRoutes]
+
+---
+
+(source_file
+  (node_line
+    (line_name
+      (root_keyword)))
+  (node_line
+    (line_name
+      (root_keyword))
+    (value
+      (array
+        (value
+          (property_name))
+        (value
+          (property_name))))))
+
 ========================
 Form validation entries
 ========================

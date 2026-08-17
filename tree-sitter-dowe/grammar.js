@@ -72,7 +72,14 @@ module.exports = grammar({
       ))),
     node_line: ($) =>
       choice(
-        prec(5, seq(field("name", $.line_name), repeat($.line_item))),
+        prec(
+          5,
+          seq(
+            field("name", $.line_name),
+            optional(seq(":", field("value", $.value))),
+            repeat($.line_item),
+          ),
+        ),
         prec(
           1,
           seq(
@@ -166,14 +173,33 @@ module.exports = grammar({
         repeat("\n"),
         optional(
           seq(
-            $.value,
-            repeat(seq(",", repeat("\n"), $.value)),
+            alias($.array_value, $.value),
+            repeat(seq(optional(","), repeat("\n"), alias($.array_value, $.value))),
             optional(","),
           ),
         ),
         repeat("\n"),
         "]",
       )),
+    array_value: ($) =>
+      choice(
+        $.multiline_string,
+        $.string,
+        $.array,
+        $.object,
+        $.boolean,
+        $.null,
+        $.number,
+        $.array_type_reference,
+        $.host_function,
+        $.method_name,
+        $.path_literal,
+        $.reference,
+        $.identifier,
+        $.property_name,
+        $.body_keyword,
+        $.text_fragment,
+      ),
     object: ($) =>
       seq("{", repeat(choice($.object_entry, $.spread, "\n")), "}"),
     object_entry: ($) => seq($.property_name, ":", $.value),
@@ -238,6 +264,7 @@ module.exports = grammar({
       choice(token(prec(5, choice(
         "desktop",
         "server",
+        "databases",
         "tls",
         "route",
         "endpoints",
