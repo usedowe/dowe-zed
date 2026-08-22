@@ -1676,38 +1676,6 @@
                 },
                 {
                   "type": "STRING",
-                  "value": "softPrimary"
-                },
-                {
-                  "type": "STRING",
-                  "value": "softSecondary"
-                },
-                {
-                  "type": "STRING",
-                  "value": "softTertiary"
-                },
-                {
-                  "type": "STRING",
-                  "value": "softMuted"
-                },
-                {
-                  "type": "STRING",
-                  "value": "softSuccess"
-                },
-                {
-                  "type": "STRING",
-                  "value": "softInfo"
-                },
-                {
-                  "type": "STRING",
-                  "value": "softWarning"
-                },
-                {
-                  "type": "STRING",
-                  "value": "softDanger"
-                },
-                {
-                  "type": "STRING",
                   "value": "radius"
                 },
                 {

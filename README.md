@@ -10,11 +10,11 @@ The extension is maintained here directly. It is not generated from, embedded in
 
 Dowe editor support is intentionally split across sibling repositories:
 
-| Repository    | Responsibility                                                                                                              |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `../dowe-lsp` | Rust `dowe-language-server`, diagnostics, completions, auto-import code actions, formatting, hover, symbols, navigation, and semantic editor behavior |
-| `../dowe-zed` | Zed language extension adapter, Tree-sitter grammar, Zed queries, `extension.toml`, and dev-extension install surface |
-| `../dowe-zed/icons` | Separate `dowe-icons` icon theme extension published from this repository |
+| Repository          | Responsibility                                                                                                                                        |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `../dowe-lsp`       | Rust `dowe-language-server`, diagnostics, completions, auto-import code actions, formatting, hover, symbols, navigation, and semantic editor behavior |
+| `../dowe-zed`       | Zed language extension adapter, Tree-sitter grammar, Zed queries, `extension.toml`, and dev-extension install surface                                 |
+| `../dowe-zed/icons` | Separate `dowe-icons` icon theme extension published from this repository                                                                             |
 
 Keep semantic language behavior in `dowe-language-server`. This repository should only own Zed integration, grammar, highlighting, structure, packaging, and local extension installation.
 
@@ -65,7 +65,7 @@ cargo check --target wasm32-wasip2
 
 Install the extension in Zed with `zed: install dev extension` and select this repository directory.
 
-After replacing the local language-server binary or changing the grammar rev, restart the Dowe language server or reload the Zed window. If Zed still uses stale grammar state, reinstall the dev extension from this repository.
+After replacing the local language-server binary or changing the grammar rev, restart the Dowe language server or reload the Zed window. If Zed still reports `children are not valid for this component` for `Password` with a direct `validate` child, Zed is using an older language-server binary. Rebuild and install `dowe-language-server` from `../dowe-lsp`, then restart Zed. If Zed still uses stale grammar state, reinstall the dev extension from this repository.
 
 The separate `dowe-icons` extension provides the `Dowe Icons Dark` and `Dowe Icons Light` icon themes. Select one from Zed's icon theme selector to use the Dowe logo for `.dowe` files in the project panel.
 
@@ -79,10 +79,10 @@ Run local validation:
 
 ## View Syntax
 
-The grammar recognizes the built-in view components, including `Section`, `AppBar`, `Footer`, `BottomBar`, `SideNav`, `RailNav`, `Sidebar`, `NavMenu`, `Scaffold`, `Tabs`, `Stepper`, `Drawer`, `Brand`, `Banner`, `Input`, `Slider`, `Dropzone`, `Select`, `Option`, `Video`, `Audio`, `Camera`, `Microphone`, `Image`, `Accordion`, `AvatarGroup`, `Carousel`, `ChatBox`, `Checkbox`, `Color`, `Date`, `DateRange`, `Empty`, `Marquee`, `TypeWriter`, `RichText`, `Record`, `ToggleGroup`, `Collapsible`, `Countdown`, `Map`, `RadioGroup`, `Toggle`, `ToggleTheme`, `Fab`, `fabAction`, and `Divider`. Completion and diagnostic support for their props is provided by `dowe-language-server`.
+The grammar recognizes the built-in view components, including `Section`, `AppBar`, `Footer`, `BottomBar`, `SideNav`, `RailNav`, `Sidebar`, `NavMenu`, `Scaffold`, `Tabs`, `Stepper`, `Drawer`, `Brand`, `Banner`, `Input`, `Password`, `Slider`, `Dropzone`, `Select`, `Option`, `validate`, `Video`, `Audio`, `Camera`, `Microphone`, `Image`, `Accordion`, `AvatarGroup`, `Carousel`, `ChatBox`, `Checkbox`, `Color`, `Date`, `DateRange`, `Empty`, `Marquee`, `TypeWriter`, `RichText`, `Record`, `ToggleGroup`, `Collapsible`, `Countdown`, `Map`, `RadioGroup`, `Toggle`, `ToggleTheme`, `Fab`, `fabAction`, and `Divider`. Completion and diagnostic support for their props is provided by `dowe-language-server`.
 
 ```text
-AppBar variant:"soft" scheme:"surface" position:"fixed" bordered:true boxed:true floating:true dockOnScroll:true
+AppBar variant:"solid" scheme:"surface" position:"fixed" bordered:true boxed:true floating:true dockOnScroll:true
   start
     Text
       "Dowe"
@@ -90,15 +90,17 @@ AppBar variant:"soft" scheme:"surface" position:"fixed" bordered:true boxed:true
     Text
       "Layout"
   end
-    Button href:"/blogs" variant:"soft" scheme:"tertiary"
+    Button href:"/blogs" variant:"solid" scheme:"tertiary"
       "Blogs"
 Input label:"Email" placeholder:"name@example.com" labelFloating:true variant:"outlined" scheme:"primary"
-Select label:"Role" placeholder:"Choose a role" labelFloating:true variant:"soft" scheme:"secondary"
+Password label:"Password" labelFloating:true
+  validate rule:"required" message:"Enter your password"
+Select label:"Role" placeholder:"Choose a role" labelFloating:true variant:"solid" scheme:"secondary"
   Option value:"admin" label:"Administrator" description:"Manage users"
   Option value:"viewer" label:"Viewer"
 Video src:"https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" aspect:"horizontal" scheme:"surface"
 Divider orientation:"vertical" scheme:"primary"
-ToggleTheme variant:"soft" scheme:"secondary"
+ToggleTheme variant:"solid" scheme:"secondary"
 Slider bind:volume min:0 max:100 step:5 label:"Volume" scheme:"warning"
 Dropzone accept:"image/*" label:"Images" placeholder:"Drop images" variant:"outlined" scheme:"surface"
 RichText title:true size:"5xl"
@@ -114,12 +116,12 @@ Map centerLat:4.7109 centerLng:-74.0721 height:"360px"
   marker id:"office" lat:4.7109 lng:-74.0721 label:"Office" icon:"start"
 Fab icon:"settings" label:"Actions"
   fabAction label:"Docs" icon:"link" href:"/docs"
-Drawer open:drawerOpen position:"start" variant:"soft" scheme:"surface" show:{ xs:true md:false }
+Drawer open:drawerOpen position:"start" variant:"solid" scheme:"surface" show:{ xs:true md:false }
   header
     Title
       "Menu"
   body
-    SideNav variant:"soft" scheme:"surface"
+    SideNav variant:"solid" scheme:"surface"
   footer
     Text
       "Signed in"
@@ -135,6 +137,10 @@ Tabs position:"top"
 `onClick:{ set:drawerOpen value:!drawerOpen }`, `onClick:{ set:counter add:1 }`, or
 `onClick:{ set:message append:"!" }`. The grammar already recognizes object values; the language
 server provides the shared compiler validation for targets and operation types.
+
+Layout components accept the shared flex item prop, including `Grid flex:1` and responsive values
+such as `flex:{ xs:1 md:"none" }`. Completion, hover, and diagnostics come from the Rust language
+server used by both editor integrations.
 
 ## Language Server
 
@@ -200,5 +206,5 @@ version = "0.1.0"
 | `scripts/prepare-publish.sh`        | Points the grammar at the public repository before publishing                          |
 | `scripts/check.sh`                  | Runs local build and decoupling checks                                                 |
 | `icons/extension.toml`              | Registers the separate Dowe icon theme extension                                       |
-| `icons/icon_themes/dowe-icons.json` | Defines the Dowe dark and light icon themes                                             |
-| `icons/icons/logo.svg`             | Provides the icon theme asset                                                           |
+| `icons/icon_themes/dowe-icons.json` | Defines the Dowe dark and light icon themes                                            |
+| `icons/icons/logo.svg`              | Provides the icon theme asset                                                          |

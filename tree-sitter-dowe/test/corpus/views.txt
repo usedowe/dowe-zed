@@ -895,6 +895,48 @@ page ContactPage
         (value
           (string))))))
 
+==================
+Flex item props
+==================
+
+page flexItemPage
+  Grid flex:1
+    Box flex:"initial"
+      Text
+        "Grid item"
+
+---
+
+(source_file
+  (node_line
+    name: (line_name
+      (root_keyword))
+    (line_item
+      (value
+        (property_name))))
+  (node_line
+    name: (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (number)))))
+  (node_line
+    name: (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
+  (node_line
+    name: (line_name
+      (component_name)))
+  (text_line
+    text: (text_token
+      (string))))
+
 =======================
 Multiline visual props
 =======================
@@ -1446,6 +1488,7 @@ page advancedForms
   Editor label:"Notes" placeholder:"Write notes" minHeight:180
   ImageCropper label:"Avatar" shape:"circle"
   Password label:"Password" hideStrength:false
+    validate rule:"required" message:"Enter your password"
   Phone label:"Phone" country:"US"
   Pin label:"Code" length:6
   Textarea label:"Bio" rows:4 maxLength:160
@@ -1635,6 +1678,19 @@ page advancedForms
         (property_name)
         (value
           (boolean)))))
+  (node_line
+    (line_name
+      (component_name))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string))))
+    (line_item
+      (prop
+        (property_name)
+        (value
+          (string)))))
   (node_line
     (line_name
       (component_name))
